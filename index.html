@@ -1384,7 +1384,7 @@ function openSpawnPicker(mode){spawnAfterMode=mode;const box=$('spawnChoices');b
  if(ownedProps.length){for(const p of ownedProps){const b=document.createElement('button');b.className='spawnChoice';b.innerHTML=(p.type==='apt'?'🏢 ':'🏠 ')+p.name+'<small>Start at your '+(p.type==='apt'?'apartment':'house')+'</small>';b.onclick=()=>selectStartSpawn('property',p.id);box.appendChild(b)}}
  else{const n=document.createElement('div');n.style.opacity='.6';n.style.fontSize='13px';n.textContent='Buy a house or apartment to unlock property spawns.';box.appendChild(n)}
  $('start').style.display='none';$('spawnPick').style.display='flex'}
-function selectStartSpawn(mode,id){spawnMode=mode;if(mode==='property'){const p=props.find(q=>q.id===id);if(!p||!p.owned)return;homeId=p.id;pl.home={x:p.spawnX??p.x,z:p.spawnZ??p.z}}else{pl.home=null;homeId=null}saveGame();$('spawnPick').style.display='none';if(spawnAfterMode==='single')startSingle();else{el('mpMenu').style.display='flex';setTab('find');err('');renderStatus();renderLobbies();try{ensureNet().then(()=>{net.setName(me.name);renderStatus();renderLobbies()}).catch(e=>err(e.message))}catch(e){err(e.message)}}}
+function selectStartSpawn(mode,id){spawnMode=mode;if(mode==='property'){const p=props.find(q=>q.id===id);if(!p||!p.owned)return;homeId=p.id;pl.home={x:p.spawnX??p.x,z:p.spawnZ??p.z}}else{pl.home=null;homeId=null}saveGame();$('spawnPick').style.display='none';if(spawnAfterMode==='single')startSingle();else{MPG.openMenu()}}
 function startSingle(){vsAudioInit();if(VSA.ctx&&(VSA.ctx.state==='suspended'||VSA.ctx.state==='interrupted'))VSA.ctx.resume();vsSfx('pickup');setStartPosition();started=true;window.__vsGameplayStart();$('spawnPick').style.display='none';$('start').style.display='none';try{cv.requestPointerLock()}catch(e){}}
 $('go').onclick=()=>openSpawnPicker('single');
 $('spawnBack').onclick=()=>{$('spawnPick').style.display='none';$('start').style.display='flex'};
@@ -1744,6 +1744,7 @@ function setTab(t){tab=t;el('mpFind').style.display=t==='find'?'block':'none';el
 function setType(lock){wantLock=lock;el('tOpen').className=lock?'':'sel';el('tLock').className=lock?'sel':'';el('pwRow').style.display=lock?'block':'none';err('')}
 function commitName(){me.name=cleanName(el('mpName').value,16)||me.name;el('mpName').value=me.name;try{localStorage.setItem('vs_name',me.name)}catch(e){}if(net)net.setName(me.name)}
 el('mpBtn').onclick=()=>openSpawnPicker('multi');
+MPG.openMenu=function(){el('mpMenu').style.display='flex';setTab('find');err('');renderStatus();renderLobbies();try{ensureNet().then(()=>{net.setName(me.name);renderStatus();renderLobbies()}).catch(e=>err(e.message))}catch(e){err(e.message)}};
 el('mpBack').onclick=()=>{el('mpMenu').style.display='none'};
 el('tabFind').onclick=()=>setTab('find');el('tabCreate').onclick=()=>{setTab('create');if(!el('cName').value)el('cName').placeholder=me.name+"'s lobby"};
 el('tOpen').onclick=()=>setType(false);
