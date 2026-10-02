@@ -12,7 +12,7 @@ html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font:14px/1.
 #cash{font-size:24px;color:#7bd67b;font-weight:700}
 .bar{width:180px;height:10px;background:#0008;border:1px solid #fff5;margin:6px 0 0 auto}.bar i{display:block;height:100%;background:#e33;width:100%}
 #car i{background:#39f}
-#mm{position:fixed;left:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));width:280px;height:280px;border-radius:50%;border:3px solid #fffc;background:#20242a}
+#mm{position:fixed;left:12px;top:calc(125px + env(safe-area-inset-top,0px));width:120px;height:120px;border-radius:50%;border:3px solid #fffc;background:#20242a}
 #help{position:fixed;left:170px;bottom:calc(14px + env(safe-area-inset-bottom,0px));background:var(--panel);padding:8px 12px;border-radius:8px;font-size:12px;max-width:380px}
 #hint{position:fixed;left:50%;bottom:18%;transform:translateX(-50%);background:var(--panel);padding:6px 14px;border-radius:20px;display:none}
 #msg{position:fixed;left:50%;top:14%;transform:translateX(-50%);font-size:20px;font-weight:700;text-shadow:0 2px 6px #000;opacity:0;transition:opacity .3s}
@@ -22,6 +22,10 @@ html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font:14px/1.
 #start .modeBtns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:4px}
 #start .modeBtn{min-width:190px}
 #start .modeBtn.online{background:#35a8ff;color:#06111b}
+#spawnPick{position:fixed;inset:0;z-index:13;background:#000d;display:none;align-items:center;justify-content:center;padding:18px;box-sizing:border-box;text-align:center}
+#spawnPick .spawnBox{width:min(430px,94vw);background:#10151ddd;border:1px solid #fff3;border-radius:16px;padding:22px;box-shadow:0 14px 50px #000a}
+#spawnPick h2{margin:0 0 6px;font-size:28px}#spawnPick p{margin:0 0 16px;opacity:.75}
+#spawnChoices{display:flex;flex-direction:column;gap:10px}.spawnChoice{width:100%;padding:13px 16px;border:1px solid #fff2;border-radius:10px;background:#ffffff10;color:#fff;font-weight:800;font-size:16px;cursor:pointer}.spawnChoice:hover{background:#ffffff18}.spawnChoice small{display:block;font-weight:500;opacity:.7;margin-top:3px}.spawnChoice.general{background:#35a8ff;color:#06111b;border-color:#35a8ff}
 #roomInfo{min-height:22px;color:#9fd8ff;font-weight:700;text-align:center}
 #xh{position:fixed;left:50%;top:50%;width:14px;height:14px;margin:-9px;border:2px solid #fff;border-radius:50%;display:none;opacity:.85;pointer-events:none}
 #wpn{font-size:16px;color:#ffd}
@@ -38,7 +42,7 @@ html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font:14px/1.
 body #sub{bottom:calc(190px + env(safe-area-inset-bottom,0px))}
 #vg{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,#0000 55%,#000b 125%)}
 html,body{touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
-#mm{bottom:calc(44px + env(safe-area-inset-bottom,0px))}
+#mm{top:calc(92px + env(safe-area-inset-top,0px));bottom:auto}
 #bars{position:fixed;left:12px;bottom:calc(14px + env(safe-area-inset-bottom,0px));width:146px}
 #bars .bar{width:100%;margin:3px 0 0;height:9px}
 #hp{background:#3c3}
@@ -60,8 +64,8 @@ html,body{touch-action:none;-webkit-user-select:none;user-select:none;-webkit-to
 #start{background:linear-gradient(#0000 20%,#000d)}
 #start .lg{font:italic 900 clamp(56px,12vw,130px)/.9 Impact,sans-serif;background:linear-gradient(#ffb347,#ff3d7f);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 4px 0 #000)}
 #tc{display:none}.touch #tc{display:block}.touch #help{display:none}
-.touch #mm{bottom:auto;top:calc(12px + env(safe-area-inset-top,0px))}
-.touch #bars{bottom:auto;top:calc(304px + env(safe-area-inset-top,0px))}
+.touch #mm{bottom:auto;top:calc(108px + env(safe-area-inset-top,0px));z-index:3}
+.touch #bars{bottom:auto;top:calc(236px + env(safe-area-inset-top,0px));z-index:4}
 .touch #hud{top:calc(64px + env(safe-area-inset-top,0px))}
 #joy{position:fixed;width:120px;height:120px;border-radius:50%;border:2px solid #fff8;background:#fff2;display:none;pointer-events:none;z-index:4}
 #knob{position:absolute;left:35px;top:35px;width:50px;height:50px;border-radius:50%;background:#fffb}
@@ -89,6 +93,7 @@ html,body{touch-action:none;-webkit-user-select:none;user-select:none;-webkit-to
 .touch #tc.carMode #joy,.touch #tc.carMode #bFire,.touch #tc.carMode #bWpn,.touch #tc.carMode #bBrk,.touch #tc.carMode #bMug{display:none}
 .touch #tc.carMode #bAct{display:block;right:calc(50% - 36px);bottom:calc(132px + env(safe-area-inset-bottom,0px));width:72px;height:72px;background:#b08b2e;font-size:11px}
 
+#soundBtn{position:fixed;top:calc(64px + env(safe-area-inset-top,0px));left:12px;z-index:21;border:2px solid #fff8;border-radius:9px;padding:8px 12px;font-weight:900;font-size:13px;color:#fff;background:#1b7f45;box-shadow:0 3px 12px #0008;cursor:pointer}
 #topBtns{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));left:12px;z-index:20;display:flex;gap:8px}
 #topBtns button{border:2px solid #fff8;border-radius:9px;padding:10px 15px;font-weight:900;font-size:14px;color:#fff;background:#151a22e8;box-shadow:0 3px 12px #0008}
 #topBtns #mapBtn{background:#d99a00;color:#111}
@@ -148,8 +153,40 @@ html,body{touch-action:none;-webkit-user-select:none;user-select:none;-webkit-to
 #board .bl.h{opacity:.6;font-size:12px;text-transform:uppercase}#board .bl.me{color:#ffd34d;font-weight:800}#board .bl span+span{text-align:right}
 #hurt{position:fixed;inset:0;pointer-events:none;z-index:7;background:radial-gradient(ellipse at center,#0000 35%,#e0101099 130%);opacity:0;transition:opacity .45s}
 #topBtns #bChat{background:#35a8ff;color:#06111b}#topBtns #bBoard{background:#6b5bd6}
-</style></head><body>
-<canvas id="c"></canvas><div id="vg"></div><div id="topBtns"><button id="mapBtn">🗺 MAP</button><button id="saveBtn">💾 SAVE GAME</button></div>
+</style>
+<script src="https://sdk.crazygames.com/crazygames-sdk-v3.js"></script>
+<script>
+window.__vsCrazyReady=(async function(){
+  try{
+    if(!window.CrazyGames||!window.CrazyGames.SDK)return false;
+    await window.CrazyGames.SDK.init();
+    window.__vsCrazy=true;
+    window.__vsCrazyMuted=!!(window.CrazyGames.SDK.game&&window.CrazyGames.SDK.game.settings&&window.CrazyGames.SDK.game.settings.muteAudio);
+    window.__vsSetAudioMuted=function(muted){
+      window.__vsCrazyMuted=!!muted;
+      document.querySelectorAll('audio,video').forEach(function(a){a.muted=!!muted;});
+      if(window.__vsAudioGain)window.__vsAudioGain.gain.value=muted?0:1;
+    };
+    window.__vsSetAudioMuted(window.__vsCrazyMuted);
+    if(window.CrazyGames.SDK.game&&window.CrazyGames.SDK.game.addSettingsChangeListener){
+      window.CrazyGames.SDK.game.addSettingsChangeListener(function(settings){
+        window.__vsSetAudioMuted(!!(settings&&settings.muteAudio));
+      });
+    }
+    return true;
+  }catch(e){
+    window.__vsCrazy=false;
+    return false;
+  }
+})();
+window.__vsGameplayStart=function(){
+  try{
+    if(window.CrazyGames&&window.CrazyGames.SDK&&window.CrazyGames.SDK.game&&window.CrazyGames.SDK.game.gameplayStart)
+      window.CrazyGames.SDK.game.gameplayStart();
+  }catch(e){}
+};
+</script></head><body>
+<canvas id="c"></canvas><div id="vg"></div><button id="soundBtn" type="button">🔊 SOUND ON</button><div id="topBtns"><button id="mapBtn">🗺 MAP</button><button id="saveBtn">💾 SAVE GAME</button></div>
 <div id="mapOverlay"><div id="mapHead"><h2>VICE STREETS MAP</h2><button class="sel" data-filter="all">All</button><button data-filter="shop">Shops</button><button data-filter="gun">Gun Shops</button><button data-filter="food">Food</button><button data-filter="conv">24h Store</button><button data-filter="cloth">Clothes</button><button data-filter="mod">Auto Shop</button><button data-filter="police">Police</button><button data-filter="prop">Properties</button><button data-filter="mission">Missions</button><button data-filter="you">You</button><button id="mapClose">✕ Close</button></div><canvas id="mapCanvas"></canvas><div id="mapTools"><button id="mapMinus">−</button><button id="mapReset">⌂</button><button id="mapPlus">+</button></div></div>
 
 <div id="hud"><div id="mpTag"></div><div id="clock"></div><div id="stars"></div><div id="cash"></div><div id="wpn"></div><div id="wbar"></div></div><div id="bars"><div class="bar"><i id="hp"></i></div><div class="bar" id="car" style="display:none"><i id="chp"></i></div></div><div id="obj"></div><div id="sub"></div><div id="passed"><div class="pt"></div><div class="pr"></div></div>
@@ -161,6 +198,7 @@ html,body{touch-action:none;-webkit-user-select:none;user-select:none;-webkit-to
 <div id="start"><div class="lg">VICE<br>STREETS</div><div>Take missions · Steal cars · Buy guns · Outrun the law</div>
  <div class="modeBtns"><button id="go" class="modeBtn">🎮 SINGLE PLAYER</button><button id="mpBtn" class="modeBtn online">🌐 MULTIPLAYER</button></div>
  <small>Single player: saved locally · Multiplayer: join an open lobby or make a locked one with a password · iPad: left thumb moves, right thumb looks, buttons on the right.</small></div>
+<div id="spawnPick"><div class="spawnBox"><h2>CHOOSE SPAWN</h2><p id="spawnPickNote">Choose where you want to start this time.</p><div id="spawnChoices"></div><button id="spawnBack" class="mpGhost" style="margin-top:12px;width:100%;padding:10px">← Back</button></div></div>
 <div id="mpMenu"><div class="mpBox">
  <div class="mpHead"><h2>MULTIPLAYER</h2><button id="mpBack" class="mpGhost">← Back</button></div>
  <div><label for="mpName">Your name</label><input id="mpName" maxlength="16" placeholder="Player" autocomplete="off" data-enter="mpName"></div>
@@ -171,7 +209,7 @@ html,body{touch-action:none;-webkit-user-select:none;user-select:none;-webkit-to
   <div><label for="cName">Lobby name</label><input id="cName" maxlength="24" placeholder="My lobby" autocomplete="off" data-enter="cGo"></div>
   <div><label>Lobby type</label><div class="mpType"><button id="tOpen" class="sel">🌐 Open<small>anyone can join</small></button><button id="tLock">🔒 Locked<small>password required</small></button></div></div>
   <div id="pwRow" style="display:none"><label for="cPw">Password</label><input id="cPw" type="password" maxlength="32" placeholder="Choose a password" autocomplete="off" data-enter="cGo"></div>
-  <div><label for="cMax">Max players</label><select id="cMax"><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option selected>8</option></select></div>
+  <div><label for="cMax">Max players</label><select id="cMax"><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option selected>20</option></select></div>
   <button id="cGo" class="modeBtn online" style="padding:12px 34px;font-size:18px;border:0;border-radius:8px;font-weight:700">CREATE &amp; PLAY</button>
  </div>
  <div id="mpErr"></div>
@@ -181,6 +219,52 @@ html,body{touch-action:none;-webkit-user-select:none;user-select:none;-webkit-to
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 const MPG={on:0,chat:0,pn:0,onRespawn(){}};
+/* ---------- procedural game audio ---------- */
+const VSA={ctx:null,master:null,engine:null,engine2:null,engineGain:null,engine2Gain:null,engineCar:null,lastPass:0,lastSiren:0,lastFoot:0};
+function vsAudioInit(){
+  try{
+    if(!VSA.ctx){
+      const C=window.AudioContext||window.webkitAudioContext;if(!C)return false;
+      VSA.ctx=new C();VSA.master=VSA.ctx.createGain();VSA.master.gain.value=window.__vsCrazyMuted?0:1.0;VSA.master.connect(VSA.ctx.destination);window.__vsAudioGain=VSA.master;
+    }
+    if(VSA.ctx.state==='suspended'||VSA.ctx.state==='interrupted')VSA.ctx.resume();
+    return true;
+  }catch(e){return false}
+}
+function vsGain(v,t=0){const g=VSA.ctx.createGain();g.gain.setValueAtTime(0,VSA.ctx.currentTime);g.gain.linearRampToValueAtTime(v,VSA.ctx.currentTime+t);g.connect(VSA.master);return g}
+function vsTone(f,d,type='sine',v=.08,f2=null){if(!vsAudioInit())return;const c=VSA.ctx,n=c.currentTime,o=c.createOscillator(),g=vsGain(v);o.type=type;o.frequency.setValueAtTime(f,n);if(f2!=null)o.frequency.exponentialRampToValueAtTime(Math.max(20,f2),n+d);g.gain.setValueAtTime(v,n);g.gain.exponentialRampToValueAtTime(.0001,n+d);o.connect(g);o.start(n);o.stop(n+d+.03)}
+function vsNoise(d=.12,v=.08,lp=1800){if(!vsAudioInit())return;const c=VSA.ctx,n=c.currentTime,buf=c.createBuffer(1,Math.max(1,(c.sampleRate*d)|0),c.sampleRate),a=buf.getChannelData(0);for(let i=0;i<a.length;i++)a[i]=(Math.random()*2-1)*(1-i/a.length);const src=c.createBufferSource(),f=c.createBiquadFilter(),g=vsGain(v);src.buffer=buf;f.type='lowpass';f.frequency.value=lp;src.connect(f);f.connect(g);g.gain.setValueAtTime(v,n);g.gain.exponentialRampToValueAtTime(.0001,n+d);src.start(n);src.stop(n+d+.02)}
+function vsSfx(name){
+  if(!vsAudioInit())return;
+  if(name==='gun'){vsNoise(.075,.18,4200);vsTone(105,.09,'square',.12,48);vsTone(58,.14,'sawtooth',.08,32)}
+  else if(name==='punch'){vsNoise(.07,.09,1500);vsTone(95,.06,'triangle',.05,55)}
+  else if(name==='scream'){vsTone(700,.55,'sawtooth',.07,1100);vsTone(980,.42,'triangle',.045,620);setTimeout(()=>vsNoise(.18,.025,2600),70)}
+  else if(name==='doorOpen'){vsTone(180,.08,'triangle',.045,240);vsTone(420,.12,'sine',.025,330)}
+  else if(name==='doorClose'){vsTone(260,.08,'triangle',.04,150);vsTone(115,.12,'sine',.03,85)}
+  else if(name==='cash'){vsTone(900,.08,'square',.04,1100);setTimeout(()=>vsTone(1200,.1,'square',.035,1450),55)}
+  else if(name==='carStart'){vsTone(70,.25,'sawtooth',.06,150);setTimeout(()=>vsTone(105,.22,'sawtooth',.045,210),90)}
+  else if(name==='carExit'){vsTone(150,.1,'triangle',.035,90)}
+  else if(name==='crash'){vsNoise(.28,.18,900);vsTone(65,.2,'square',.07,35)}
+  else if(name==='whoosh'){vsNoise(.22,.045,2400)}
+  else if(name==='horn'){vsTone(330,.22,'square',.045,300)}
+  else if(name==='siren'){vsTone(620,.35,'square',.035,920);setTimeout(()=>vsTone(920,.35,'square',.035,620),180)}
+  else if(name==='pickup'){vsTone(520,.08,'square',.035,760);setTimeout(()=>vsTone(760,.12,'square',.03,1040),70)}
+}
+function vsEngineUpdate(c,dt){
+  if(!vsAudioInit()||!c)return;
+  const n=VSA.ctx.currentTime,sp=Math.abs(c.v),th=Math.min(1,sp/24+(keys.KeyW||keys.ArrowUp?0.35:0));
+  if(!VSA.engine||VSA.engineCar!==c){
+    if(VSA.engine){try{VSA.engine.stop()}catch(e){}}
+    if(VSA.engine2){try{VSA.engine2.stop()}catch(e){}}
+    const o=VSA.ctx.createOscillator(),o2=VSA.ctx.createOscillator(),g=VSA.ctx.createGain(),g2=VSA.ctx.createGain();
+    o.type='sawtooth';o2.type='triangle';o.connect(g);o2.connect(g2);g.connect(VSA.master);g2.connect(VSA.master);g.gain.value=.0001;g2.gain.value=.0001;o.start();o2.start();VSA.engine=o;VSA.engine2=o2;VSA.engineGain=g;VSA.engine2Gain=g2;VSA.engineCar=c;vsSfx('carStart');
+  }
+  const rpm=70+sp*11+th*95;VSA.engine.frequency.setTargetAtTime(rpm,n,.04);VSA.engine2.frequency.setTargetAtTime(rpm*2.01,n,.05);VSA.engineGain.gain.setTargetAtTime(.12+.30*th,n,.08);VSA.engine2Gain.gain.setTargetAtTime(.04+.10*th,n,.1);
+}
+function vsEngineStop(){if(VSA.engine){try{VSA.engine.stop()}catch(e){}try{VSA.engine2.stop()}catch(e){}VSA.engine=null;VSA.engine2=null;VSA.engineCar=null}}
+addEventListener('touchend',()=>{try{vsAudioInit();if(VSA.ctx&&(VSA.ctx.state==='suspended'||VSA.ctx.state==='interrupted'))VSA.ctx.resume()}catch(e){}},{passive:true});
+addEventListener('pointerdown',()=>{try{vsAudioInit();if(VSA.ctx&&(VSA.ctx.state==='suspended'||VSA.ctx.state==='interrupted'))VSA.ctx.resume()}catch(e){}},{passive:true});
+addEventListener('click',()=>{try{vsAudioInit();if(VSA.ctx&&(VSA.ctx.state==='suspended'||VSA.ctx.state==='interrupted'))VSA.ctx.resume()}catch(e){}},{passive:true});
 const $=id=>document.getElementById(id),clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),wrap=a=>Math.atan2(Math.sin(a),Math.cos(a)),R=(a,b)=>a+Math.random()*(b-a);
 const P=54,N=12,W=N*P;
 let aim=6;
@@ -362,8 +446,8 @@ function setOwned(p,v){p.owned=v;p.st.c=v?'#3ee06a':'#ffffff';const c=v?OWNC:FSC
 function mkHouses(i,j,cx,cz){for(const a of[0,1])for(const b of[0,1]){const sx=a?1:-1,sz=b?1:-1,bx=cx+sx*9,bz=cz+sz*9,rich=hr()<.35,w=rich?HR(9.5,11.5):HR(6.5,8.5),d=rich?HR(8,10):HR(6,7.5),h=rich?HR(5.5,7):HR(3.8,5),pool=rich&&hr()<.75,gar=!rich,gw=3.8,gdir=hr()<.5?1:-1,hx=gar?bx-gdir*gw/2:bx,hz=bz+sz*(5-d/2),gx=hx+gdir*(w/2+gw/2),
  q={bx,bz,sx,sz,w,d,h,hx,hz,gar,gw,gd:6,gx,pool,wc:WC[(hr()*WC.length)|0],rc:RC[(hr()*RC.length)|0],dx:gar?gx:hx,dz:bz+sz*5.5,dw:3.4,px:hx,pz:bz-sz*6.1};
  HS.push(q);bldg.push({x:bx,z:bz,h:h*1.4});HT.push([bx+sx*6.5,bz-sz*6.8]);
- addProp({id:'h'+HS.length,name:(rich?'Luxury villa ':'House ')+HS.length,x:bx,z:cz+sz*18.6,price:Math.round((25000+w*d*650+(pool?45000:0)+(rich?50000:0))/1000)*1000,type:'house',owned:0,paid:0,bank:0})}}
-function mkApt(i,j,cz,bx,h){addProp({id:'a'+(i*8+j),name:'Apartment '+(i*8+j),x:bx,z:cz+18.6,price:Math.round((4000+h*350)/100)*100,type:'apt',owned:0,paid:0,bank:0});
+ addProp({id:'h'+HS.length,name:(rich?'Luxury villa ':'House ')+HS.length,x:bx,z:cz+sz*18.6,price:Math.round((25000+w*d*650+(pool?45000:0)+(rich?50000:0))/1000)*1000,type:'house',owned:0,paid:0,bank:0,spawnX:hx,spawnZ:bz+sz*(d/2+3.0)})}}
+function mkApt(i,j,cz,bx,h){addProp({id:'a'+(i*8+j),name:'Apartment '+(i*8+j),x:bx,z:cz+18.6,price:Math.round((4000+h*350)/100)*100,type:'apt',owned:0,paid:0,bank:0,spawnX:bx,spawnZ:cz+16.8});
  const sg=new THREE.Mesh(new THREE.PlaneGeometry(6,1.6),new THREE.MeshBasicMaterial({map:mkSign('APARTMENTS','#2e7d5b')}));sg.position.set(bx,4,cz+17.1);scene.add(sg)}
 function hpair(kind){const c=document.createElement('canvas'),e=document.createElement('canvas');c.width=c.height=e.width=e.height=128;const g=c.getContext('2d'),h=e.getContext('2d');g.fillStyle='#f3efe8';g.fillRect(0,0,128,128);for(let k=0;k<500;k++){g.fillStyle='rgba(0,0,0,'+R(.02,.06)+')';g.fillRect(R(0,128),R(0,128),2,2)}h.fillStyle='#000';h.fillRect(0,0,128,128);
  const win=(x,y,w,hh)=>{g.fillStyle='#e8e4dc';g.fillRect(x-3,y-3,w+6,hh+6);const gr=g.createLinearGradient(x,y,x+w,y+hh);gr.addColorStop(0,'#7e97ad');gr.addColorStop(1,'#1f2a36');g.fillStyle=gr;g.fillRect(x,y,w,hh);g.fillStyle='#e8e4dc';g.fillRect(x+w/2-1,y,2,hh);if(Math.random()<.6){h.fillStyle='#ffcf85';h.fillRect(x,y,w,hh)}};
@@ -631,7 +715,7 @@ function aiCar(c,dt){
  c.v+=clamp(tg-c.v,-24*dt,(cop?10:8)*dt);
  c.h+=clamp(d*3,-1.8*dt,1.8*dt)*Math.min(1,Math.abs(c.v)/4);
 }
-function dmg(c,a){if(c.dead)return;c.hp-=a*(c.armor?.5:1);if(c.hp<=0){c.dead=1;c.kind==='cop'||0;c.kind='wreck';c.mesh.children[0].material.color.set(0x1a1a1a);if(pl.car===c){pl.hp-=35;exitCar(1)}}}
+function dmg(c,a){if(c.dead)return;c.hp-=a*(c.armor?.5:1);if(c.hp<=0){vsSfx('crash');c.dead=1;c.kind==='cop'||0;c.kind='wreck';c.mesh.children[0].material.color.set(0x1a1a1a);if(pl.car===c){pl.hp-=35;exitCar(1)}}}
 function moveCar(c,dt){c.x+=Math.sin(c.h)*c.v*dt;c.z+=Math.cos(c.h)*c.v*dt;if(bump(c,2.1)){const s=Math.abs(c.v);if(s>10)dmg(c,(s-6)*1.5);c.v*=-.3}}
 const burnoutMarks=[];let burnoutClock=0;
 function addBurnoutMarks(c){
@@ -710,7 +794,7 @@ function movePed(p,dt,sp){
 }
 for(let k=0;k<60;k++){const p={m:man([0xd35400,0x16a085,0x8e44ad,0xf39c12,0x2c3e50,0xc0392b][k%6]),a:R(0,6.28),t:0,fall:0,flee:0,x:0,z:0,hp:2};place(p);peds.push(p)}
 function killPed(p,by){p.fall=p.tgt?1e9:6;p.dd=0;p.py=0;if(p.dir==null){p.dir=-1;p.vy=1.5;p.kx=p.kz=0}if(by){pl.cash+=(15+Math.random()*60)|0;crime(.8);for(const q of peds)if(Math.hypot(q.x-p.x,q.z-p.z)<30){q.flee=5;q.a=Math.atan2(q.x-p.x,q.z-p.z)}}}
-function punch(){if(pl.car||pl.cd>0||pl.dead)return;pl.cd=.4;pl.pa=0;MPG.pn++;pl.side=(pl.side|0)^1;pl.pq=.14}function punchHit(){if(MPG.on)MPG.punchHit();
+function punch(){if(pl.car||pl.cd>0||pl.dead)return;vsSfx('punch');pl.cd=.4;pl.pa=0;MPG.pn++;pl.side=(pl.side|0)^1;pl.pq=.14}function punchHit(){if(MPG.on)MPG.punchHit();
  for(const p of peds){if(p.fall>0)continue;const dx=p.x-pl.x,dz=p.z-pl.z;if(Math.hypot(dx,dz)<2.6&&dx*Math.sin(pl.h)+dz*Math.cos(pl.h)>0){p.hp--;hitDir(p,pl.x,pl.z,p.hp<=0?7:4,p.hp<=0?2.5:0,0);p.hit=.35;p.flee=4;if(p.hp<=0)killPed(p,1);else p.a=Math.atan2(dx,dz)}}}
 /* ---------- weapons & shop ---------- */
 let cur=0,shopOpen=false,mouse=0,flash=0;const own=[1,0,0,0],ammo=[0,0,0,0];
@@ -762,7 +846,7 @@ const fd=new THREE.Vector3(),tr=[];let tri=0;
 for(let i=0;i<10;i++){const l=new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(),new THREE.Vector3()]),new THREE.LineBasicMaterial({color:0xffee88}));l.frustumCulled=false;l.visible=false;scene.add(l);tr.push({l,t:0})}
 function rs(o,d,cx,cy,cz,r){const mx=o.x-cx,my=o.y-cy,mz=o.z-cz,b=mx*d.x+my*d.y+mz*d.z,c=mx*mx+my*my+mz*mz-r*r;if(c>0&&b>0)return Infinity;const D=b*b-c;if(D<0)return Infinity;return Math.max(0,-b-Math.sqrt(D))}
 function rb(o,d,b){let t0=0,t1=1e9;for(const[k,mn,mx]of[['x',b.x-8,b.x+8],['y',0,b.h+.3],['z',b.z-8,b.z+8]]){const dk=d[k],ok=o[k];if(Math.abs(dk)<1e-6){if(ok<mn||ok>mx)return Infinity}else{let a=(mn-ok)/dk,c=(mx-ok)/dk;if(a>c){const q=a;a=c;c=q}t0=Math.max(t0,a);t1=Math.min(t1,c);if(t0>t1)return Infinity}}return t0}
-function shoot(){const w=WP[cur];if(pl.cd>0)return;if(ammo[cur]<=0){toast('Out of ammo');pl.cd=.6;return}
+function shoot(){const w=WP[cur];if(pl.cd>0)return;if(ammo[cur]<=0){toast('Out of ammo');pl.cd=.6;return}vsSfx('gun');
  pl.cd=w.rate;pl.pa=0;ammo[cur]--;pl.h=yaw;crime(.04);cam.getWorldDirection(fd);
  const o={x:cam.position.x+fd.x*6,y:cam.position.y+fd.y*6,z:cam.position.z+fd.z*6},gx=pl.x+Math.sin(yaw)*.9,gz=pl.z+Math.cos(yaw)*.9;
  for(let k=0;k<w.n2;k++){const d={x:fd.x+R(-w.sp,w.sp),y:fd.y+R(-w.sp,w.sp),z:fd.z+R(-w.sp,w.sp)};let bt=150,hit=null;
@@ -1023,7 +1107,7 @@ function nearPed(){return peds.find(p=>p.fall<=0&&!p.cop&&!p.mugged&&Math.hypot(
 function talk(){const p=peds.find(p=>p.fall<=0&&!p.cop&&Math.hypot(p.x-pl.x,p.z-pl.z)<2.4);if(!p)return;p.nm=p.nm||NAMES[(Math.random()*8)|0];p.stay=3.8;p.wv=Math.random()<.35?1.8:0;p.a=Math.atan2(pl.x-p.x,pl.z-p.z);
  if(p.tgt){say(p.nm,'Who sent you? Get away from me!');p.stay=0;p.flee=5;return}
  if(Math.random()<.2){pl.cash+=20;say(p.nm,"Here, take twenty. Don't tell anyone.")}else say(p.nm,TALK[(Math.random()*TALK.length)|0])}
-function mug(){const p=nearPed();if(!p||pl.car||pl.dead||p.mugged)return;p.nm=p.nm||NAMES[(Math.random()*8)|0];p.mugged=1;const g=(20+Math.random()*80)|0;pl.cash+=g;p.flee=6;p.a=Math.atan2(p.x-pl.x,p.z-pl.z);crime(.4);say(p.nm,"Take it! Just don't hurt me!");toast('Mugged '+p.nm+' · +$'+g)}
+function mug(){const p=nearPed();if(!p||pl.car||pl.dead||p.mugged)return;p.nm=p.nm||NAMES[(Math.random()*8)|0];p.mugged=1;vsSfx('scream');const g=(20+Math.random()*80)|0;pl.cash+=g;vsSfx('cash');p.flee=6;p.a=Math.atan2(p.x-pl.x,p.z-pl.z);crime(.4);say(p.nm,"Take it! Just don't hurt me!");toast('Mugged '+p.nm+' · +$'+g)}
 function cycleWpn(){for(let k=1;k<=4;k++){const i=(cur+k)%4;if(own[i]){cur=i;break}}}
 function togglePause(){if(!started||shopOpen)return;paused=!paused;$('pause').style.display=paused?'flex':'none';for(const k in keys)keys[k]=0;mouse=0;if(paused&&document.exitPointerLock)document.exitPointerLock()}
 $('resume').onclick=()=>{togglePause();try{cv.requestPointerLock()}catch(e){}};
@@ -1056,14 +1140,15 @@ function items(){const K=shopKind,I=[];
    I.push({t:'Armor Plating',s:c.armor?'Installed':'Half crash/bullet damage',b:c.armor?'Owned':'$300',f:()=>{if(!c.armor&&spend(300))c.armor=1}})}}
  if(K==='conv'){I.push({t:'Snack',s:'+15 health',b:'$10',f:()=>{if(spend(10))pl.hp=Math.min(100,pl.hp+15)}});
   I.push({t:'Lottery Ticket',s:'10% chance to win $500',b:'$20',f:()=>{if(!spend(20))return;if(Math.random()<.1){pl.cash+=500;toast('WINNER! $500')}else toast('Not a winner')}});
-  I.push({t:'Hold up the clerk',s:'Needs a loaded gun · raises wanted',b:'ROB',f:()=>{if(cur===0||ammo[cur]<=0){toast('Equip a loaded gun first');return}if(curShop.cd>0){toast('The register is empty');return}curShop.cd=90;const g=(150+Math.random()*250)|0;pl.cash+=g;crime(1.6);closeShop();say('Clerk',"Take it! Just don't shoot!");toast('Robbery: +$'+g)}})}
+  I.push({t:'Hold up the clerk',s:'Needs a loaded gun · raises wanted',b:'ROB',f:()=>{if(cur===0||ammo[cur]<=0){toast('Equip a loaded gun first');return}if(curShop.cd>0){toast('The register is empty');return}curShop.cd=90;vsSfx('scream');const g=(150+Math.random()*250)|0;pl.cash+=g;vsSfx('cash');crime(1.6);closeShop();say('Clerk',"Take it! Just don't shoot!");toast('Robbery: +$'+g)}})}
  if(K==='prop'){const p=curShop.p;
-  if(!p.owned)I.push({t:p.name,s:(p.type==='apt'?'Apartment':'House')+' · rent $'+Math.round(p.price*.1)+'/day',b:'Buy $'+p.price.toLocaleString(),f:()=>{if(spend(p.price)){setOwned(p,1);p.paid=p.price;p.bank=0;toast('You bought '+p.name+'!');saveGame()}}});
+  if(!p.owned)I.push({t:p.name,s:(p.type==='apt'?'Apartment':'House')+' · rent $'+Math.round(p.price*.1)+'/day',b:'Buy $'+p.price.toLocaleString(),f:()=>{if(spend(p.price)){setOwned(p,1);p.paid=p.price;p.bank=0;toast('You bought '+p.name+'! Choose your spawn below.');saveGame()}}});
   else{I.push({t:'Rest',s:'Sleep until morning and heal fully',b:'Sleep',f:()=>{const mn=(480-gt+1440)%1440||1440;for(const q of props)if(q.owned)q.bank+=q.price*.1*mn/1440;gt=480;pl.hp=100;closeShop();toast('Good morning!')}});
    I.push({t:'Save game',s:'Stored in this browser',b:'Save',f:()=>{saveGame();toast('Game saved')}});
    I.push({t:'Collect rent',s:'$'+Math.floor(p.bank)+' waiting',b:'Collect',f:()=>{const g=Math.floor(p.bank);if(g>0){pl.cash+=g;p.bank=0;toast('+$'+g)}else toast('Nothing to collect')}});
-   I.push({t:'Set as home',s:'Respawn here after dying',b:homeId===p.id?'Home':'Set',f:()=>{homeId=p.id;pl.home={x:p.x,z:p.z};toast('Home set');saveGame()}});
-   I.push({t:'Sell property',s:'Get 70% back',b:'$'+Math.floor(p.paid*.7).toLocaleString(),f:()=>{pl.cash+=Math.floor(p.paid*.7);setOwned(p,0);if(homeId===p.id){homeId=null;pl.home=null}toast('Sold');saveGame();closeShop()}})}}
+   I.push({t:'Spawn at '+(p.type==='apt'?'apartment':'house'),s:(spawnMode==='property'&&homeId===p.id)?'Selected · respawn here':'Choose this property as your respawn point',b:(spawnMode==='property'&&homeId===p.id)?'Selected':'Spawn',f:()=>{homeId=p.id;spawnMode='property';pl.home={x:p.spawnX??p.x,z:p.spawnZ??p.z};toast('Spawn set to '+p.name);saveGame()}});
+   I.push({t:'General spawn',s:(spawnMode==='general')?'Selected · use normal city spawn':'Use the normal city spawn after death',b:spawnMode==='general'?'Selected':'Use',f:()=>{spawnMode='general';pl.home=null;toast('General spawn selected');saveGame()}});
+   I.push({t:'Sell property',s:'Get 70% back',b:'$'+Math.floor(p.paid*.7).toLocaleString(),f:()=>{pl.cash+=Math.floor(p.paid*.7);setOwned(p,0);if(homeId===p.id){homeId=null;pl.home=null;spawnMode='general'}toast('Sold');saveGame();closeShop()}})}}
  return I}
 function renderShop(){curItems=items();$('items').innerHTML=curItems.map((it,i)=>'<div class="row"><span><b>'+it.t+'</b> · '+it.s+'</span><button data-k="'+i+'">'+it.b+'</button></div>').join('')+'<div class="row"><span>Cash</span><b>$'+pl.cash+'</b></div>'}
 function openShop(k){shopKind=k||'gun';if(ms&&ms.d&&ms.d.q.ty==='shop'&&ms.d.q.kind===shopKind)ms.d.opened=1;curShop=sh()||stores[0];shopOpen=true;for(const q in keys)keys[q]=0;mouse=0;if(document.exitPointerLock)document.exitPointerLock();$('shop').querySelector('h2').textContent=curShop.n.toUpperCase();$('shop').style.display='flex';renderShop()}
@@ -1085,8 +1170,8 @@ function copLogicOld(dt){const s=stars(),f=focus();let n=0,near=0;
  if(s===0&&pl.hp<100&&!pl.dead)pl.hp=Math.min(100,pl.hp+2*dt)}
 /* ---------- player ---------- */
 function setCarTouchUI(on){$('tc').classList.toggle('carMode',!!on);if(!on){keys.KeyW=keys.KeyS=keys.KeyA=keys.KeyD=keys.Space=keys.ShiftLeft=keys.ShiftRight=false;const k=knob;k.style.transform='translate(0,0)'}}
-function enterCar(c){pl.last=c;if(c.kind==='traffic'){crime(1);toast('Carjacking!')}else if(c.kind==='cop'){crime(2);toast('Stole a police car!')}c.kind='mine';pl.car=c;pl.mesh.visible=false;setCarTouchUI(true);$('bAct').innerHTML='EXIT<br>CAR'}
-function exitCar(force){const c=pl.car;if(!c)return;pl.x=c.x+Math.cos(c.h)*2.8;pl.z=c.z-Math.sin(c.h)*2.8;bump(pl,.6);if(!c.dead){c.kind='parked';c.v=0}pl.car=null;pl.mesh.visible=true;setCarTouchUI(false);$('bAct').innerHTML='ENTER<br>USE'}
+function enterCar(c){vsAudioInit();vsSfx('carStart');pl.last=c;if(c.kind==='traffic'){crime(1);toast('Carjacking!')}else if(c.kind==='cop'){crime(2);toast('Stole a police car!')}c.kind='mine';pl.car=c;pl.mesh.visible=false;setCarTouchUI(true);$('bAct').innerHTML='EXIT<br>CAR'}
+function exitCar(force){const c=pl.car;if(!c)return;vsSfx('carExit');vsEngineStop();pl.x=c.x+Math.cos(c.h)*2.8;pl.z=c.z-Math.sin(c.h)*2.8;bump(pl,.6);if(!c.dead){c.kind='parked';c.v=0}pl.car=null;pl.mesh.visible=true;setCarTouchUI(false);$('bAct').innerHTML='ENTER<br>USE'}
 function shopCashierNear(s){if(!s||!s.room)return false;return Math.hypot(pl.x-s.room.cashX,pl.z-s.room.cashZ)<2.5}
 function shopPricePreview(s){const k=s&&s.k;const a=k==='gun'?['Pistol $250','SMG $900','Shotgun $1,300']:k==='food'?['Burger $15','Big Meal $40','Soda $5']:k==='cloth'?['Classic Yellow $0','Sky Blue $60','Red Jacket $80']:k==='mod'?['Respray $100','Repair $150','Turbo $400']:['Snack $10','Lottery $20'];return a.join(' · ')}
 function interact(){if(!started||pl.dead)return;const st0=sh();if(st0&&Math.abs(pl.car?pl.car.v:0)<9){if(shopCashierNear(st0)){toast(shopPricePreview(st0));openShop(st0.k)}else toast('Walk to the CASHIER and press USE');return}if(pl.car){if(Math.abs(pl.car.v)<9)exitCar();return}
@@ -1095,14 +1180,26 @@ function interact(){if(!started||pl.dead)return;const st0=sh();if(st0&&Math.abs(
 function walk(dt){pl.spd=0;const k=keys,fx=Math.sin(yaw),fz=Math.cos(yaw),lx=Math.cos(yaw),lz=-Math.sin(yaw),f=(k.KeyW||k.ArrowUp?1:0)-(k.KeyS||k.ArrowDown?1:0),l=(k.KeyA?1:0)-(k.KeyD?1:0);
  let mx=fx*f+lx*l,mz=fz*f+lz*l;const m=Math.hypot(mx,mz);if(m>0){const sp=(k.ShiftLeft||k.ShiftRight?9:5.2)*(pl.boost>0?1.35:1)*dt;pl.spd=sp/dt;mx/=m;mz/=m;pl.x+=mx*sp;pl.z+=mz*sp;pl.h+=wrap(Math.atan2(mx,mz)-pl.h)*Math.min(1,14*dt)}
  bump(pl,.6);if(k.KeyJ)punch()}
-function respawn(){if(ms)failMission("You died");pl.hp=100;pl.dead=0;pl.cash=Math.floor(pl.cash*.9);wanted=0;pl.car=null;pl.mesh.visible=true;setCarTouchUI(false);$('bAct').innerHTML='ENTER<br>USE';pl.x=pl.home?pl.home.x:2*P+8;pl.z=pl.home?pl.home.z:2*P+20;$('wasted').style.display='none';MPG.onRespawn()}
+function respawn(){if(ms)failMission("You died");pl.hp=100;pl.dead=0;pl.cash=Math.floor(pl.cash*.9);wanted=0;pl.car=null;pl.mesh.visible=true;setCarTouchUI(false);$('bAct').innerHTML='ENTER<br>USE';const useProperty=spawnMode==='property'&&homeId&&pl.home;pl.x=useProperty?pl.home.x:2*P+8;pl.z=useProperty?pl.home.z:2*P+20;$('wasted').style.display='none';MPG.onRespawn()}
 /* ---------- input ---------- */
 const keys={};
 addEventListener('keydown',e=>{if(shopOpen){if(e.code==='KeyF'||e.code==='Escape')closeShop();return}if(e.code==='KeyM'){if(mapOpen)closeMap();else openMap();return}if(mapOpen)return;if(e.code==='KeyP'||e.code==='Escape'){togglePause();return}if(paused)return;keys[e.code]=1;if(e.code==='KeyX')cycleWpn();if(e.code==='KeyH')mug();if(e.code==='KeyR')$('rbtn').click();if(e.code==='KeyF')interact();if(e.code==='KeyJ')punch();if(/^Digit[1-4]$/.test(e.code)&&own[+e.code[5]-1])cur=+e.code[5]-1;if(/^(Space|Arrow)/.test(e.code))e.preventDefault()});
 addEventListener('keyup',e=>keys[e.code]=0);
 cv.addEventListener('mousedown',()=>{if(!started)return;try{if(!document.pointerLockElement)cv.requestPointerLock()}catch(e){}mouse=1});addEventListener('mouseup',()=>mouse=0);
 addEventListener('mousemove',e=>{if(started&&(document.pointerLockElement||e.buttons&1)){yaw-=e.movementX*.003;aim=clamp(aim-e.movementY*.06,-8,30)}});
-$('go').onclick=()=>{started=true;$('start').style.display='none';try{cv.requestPointerLock()}catch(e){}};
+function setStartPosition(){const useProperty=spawnMode==='property'&&homeId&&pl.home;if(useProperty){pl.x=pl.home.x+R(-1.5,1.5);pl.z=pl.home.z+R(-1.5,1.5)}else{pl.x=2*P+8;pl.z=2*P+20}}
+let spawnAfterMode='single';
+function openSpawnPicker(mode){spawnAfterMode=mode;const box=$('spawnChoices');box.innerHTML='';$('spawnPickNote').textContent=mode==='multi'?'Choose your spawn first, then you can join or create a multiplayer lobby.':'Choose where you want to start this time.';
+ const g=document.createElement('button');g.className='spawnChoice general';g.innerHTML='🌆 GENERAL SPAWN<small>Start at the normal city spawn</small>';g.onclick=()=>selectStartSpawn('general');box.appendChild(g);
+ const ownedProps=props.filter(p=>p.owned);
+ if(ownedProps.length){for(const p of ownedProps){const b=document.createElement('button');b.className='spawnChoice';b.innerHTML=(p.type==='apt'?'🏢 ':'🏠 ')+p.name+'<small>Start at your '+(p.type==='apt'?'apartment':'house')+'</small>';b.onclick=()=>selectStartSpawn('property',p.id);box.appendChild(b)}}
+ else{const n=document.createElement('div');n.style.opacity='.6';n.style.fontSize='13px';n.textContent='Buy a house or apartment to unlock property spawns.';box.appendChild(n)}
+ $('start').style.display='none';$('spawnPick').style.display='flex'}
+function selectStartSpawn(mode,id){spawnMode=mode;if(mode==='property'){const p=props.find(q=>q.id===id);if(!p||!p.owned)return;homeId=p.id;pl.home={x:p.spawnX??p.x,z:p.spawnZ??p.z}}else{pl.home=null;homeId=null}saveGame();$('spawnPick').style.display='none';if(spawnAfterMode==='single')startSingle();else{el('mpMenu').style.display='flex';setTab('find');err('');renderStatus();renderLobbies();try{ensureNet().then(()=>{net.setName(me.name);renderStatus();renderLobbies()}).catch(e=>err(e.message))}catch(e){err(e.message)}}}
+function startSingle(){vsAudioInit();if(VSA.ctx&&(VSA.ctx.state==='suspended'||VSA.ctx.state==='interrupted'))VSA.ctx.resume();vsSfx('pickup');setStartPosition();started=true;window.__vsGameplayStart();$('spawnPick').style.display='none';$('start').style.display='none';try{cv.requestPointerLock()}catch(e){}}
+$('go').onclick=()=>openSpawnPicker('single');
+$('spawnBack').onclick=()=>{$('spawnPick').style.display='none';$('start').style.display='flex'};
+$('soundBtn').onclick=()=>{try{vsAudioInit();if(VSA.ctx){VSA.master.gain.cancelScheduledValues(VSA.ctx.currentTime);VSA.master.gain.setValueAtTime(window.__vsCrazyMuted?0:0.9,VSA.ctx.currentTime);if(VSA.ctx.state!=='running')VSA.ctx.resume();vsTone(660,.16,'sine',.18,880);setTimeout(()=>vsTone(880,.16,'sine',.14,660),90);$('soundBtn').textContent='🔊 SOUND ON';$('soundBtn').style.background='#1b7f45'}}catch(e){$('soundBtn').textContent='🔇 AUDIO BLOCKED'}};
 /* ---------- loop ---------- */
 const mg=$('mm').getContext('2d');
 const mapC=$('mapCanvas'),mapX=mapC.getContext('2d');let mapOpen=false,mapFilter='all',mapZoom=1,mapPanX=0,mapPanZ=0,mapDrag=null;
@@ -1138,10 +1235,12 @@ function update(dt){
  updateBurnoutMarks(dt);
  if(pl.hp<=0&&!pl.dead){pl.dead=3;pl.dd=0;pl.py=0;pl.vy=2.5;pl.dir=-1;pl.kx=pl.kz=0;pl.turns=0;$('wasted').style.display='flex'}
  if(pl.dead){pl.dead-=dt;if(pl.dead<=0)respawn()}
- pl.cd-=dt;pl.inv-=dt;if(pl.pq>0){pl.pq-=dt;if(pl.pq<=0&&!pl.car&&!pl.dead)punchHit()}if(mouse&&!pl.car&&!pl.dead)cur?shoot():punch();aim=clamp(aim+((keys.KeyT?1:0)-(keys.KeyG?1:0))*25*dt,-8,30);for(const t of tr){t.t-=dt;if(t.t<=0)t.l.visible=false}pl.boost-=dt;for(const s of stores){if(!s)continue;if(s.room&&s.doorL&&s.doorR){const rr=s.room,nearDoor=Math.hypot(pl.x-rr.x,pl.z-rr.doorZ)<5.5;const open=nearDoor||Math.abs(pl.z-rr.doorZ)<1.4&&Math.abs(pl.x-rr.x)<2.8;const target=open?1:0;s.doorL.position.x+=(s.doorBaseL-1.25*target-s.doorL.position.x)*Math.min(1,dt*9);s.doorR.position.x+=(s.doorBaseR+1.25*target-s.doorR.position.x)*Math.min(1,dt*9)}if(s.cd>0)s.cd-=dt}for(const q of props)if(q.owned)q.bank+=q.price*.1*dt*2/1440;flash-=dt;for(let wi=1;wi<weapons.length;wi++){const ww=weapons[wi];ww.visible=cur===wi&&!pl.car&&!pl.dead;ww.userData.flash.visible=ww.visible&&flash>0}yaw+=((keys.KeyQ||keys.ArrowLeft?1:0)-(keys.KeyE||keys.ArrowRight?1:0))*2*dt;
- if(!pl.dead){if(pl.car)drive(pl.car,dt);else walk(dt)}
+ pl.cd-=dt;pl.inv-=dt;if(pl.pq>0){pl.pq-=dt;if(pl.pq<=0&&!pl.car&&!pl.dead)punchHit()}if(mouse&&!pl.car&&!pl.dead)cur?shoot():punch();aim=clamp(aim+((keys.KeyT?1:0)-(keys.KeyG?1:0))*25*dt,-8,30);for(const t of tr){t.t-=dt;if(t.t<=0)t.l.visible=false}pl.boost-=dt;for(const s of stores){if(!s)continue;if(s.room&&s.doorL&&s.doorR){const rr=s.room,nearDoor=Math.hypot(pl.x-rr.x,pl.z-rr.doorZ)<5.5;const open=nearDoor||Math.abs(pl.z-rr.doorZ)<1.4&&Math.abs(pl.x-rr.x)<2.8;const target=open?1:0;if(s._audioDoorState!==target){if(target)vsSfx('doorOpen');else vsSfx('doorClose');s._audioDoorState=target}s.doorL.position.x+=(s.doorBaseL-1.25*target-s.doorL.position.x)*Math.min(1,dt*9);s.doorR.position.x+=(s.doorBaseR+1.25*target-s.doorR.position.x)*Math.min(1,dt*9)}if(s.cd>0)s.cd-=dt}for(const q of props)if(q.owned)q.bank+=q.price*.1*dt*2/1440;flash-=dt;for(let wi=1;wi<weapons.length;wi++){const ww=weapons[wi];ww.visible=cur===wi&&!pl.car&&!pl.dead;ww.userData.flash.visible=ww.visible&&flash>0}yaw+=((keys.KeyQ||keys.ArrowLeft?1:0)-(keys.KeyE||keys.ArrowRight?1:0))*2*dt;
+ if(!pl.dead){if(pl.car){drive(pl.car,dt);vsEngineUpdate(pl.car,dt)}else{walk(dt);vsEngineStop()}}
  for(const c of cars){if(c.kind==='traffic'||c.kind==='cop')aiCar(c,dt);else if(c.kind==='parked'||c.kind==='wreck')c.v*=Math.max(0,1-3*dt);moveCar(c,dt)}
  carPairs();
+ for(const c of cars){if(c.dead)continue;const d=Math.hypot(c.x-pl.x,c.z-pl.z);if(c.kind==='traffic'&&Math.abs(c.v)>8){if(d<18&&!c._passPlayed){vsSfx('whoosh');if(Math.random()<.12)vsSfx('horn');c._passPlayed=1}else if(d>26)c._passPlayed=0}}
+ if(wanted>0){VSA.lastSiren-=dt;if(VSA.lastSiren<=0&&cars.some(c=>c.kind==='cop'&&Math.hypot(c.x-pl.x,c.z-pl.z)<45)){vsSfx('siren');VSA.lastSiren=2.2}}
  if(pl.car){pl.x=pl.car.x;pl.z=pl.car.z}
  for(const p of peds){if(p.fall>0){p.fall-=dt;if(p.fall<=0){if(p.cop)removeCop(p);else place(p)}}else if(p.cop)copFoot(p,dt);else{p.t-=dt;p.flee-=dt;p.stay-=dt;if(cur>0&&!pl.car&&p.flee<=0&&Math.hypot(p.x-pl.x,p.z-pl.z)<8){p.flee=4;p.a=Math.atan2(p.x-pl.x,p.z-pl.z);if(subT<=0&&Math.random()<.3)say('Pedestrian',"Please, don't shoot!")}if(p.t<0&&!(p.stay>0)){p.t=R(2,6);if(p.flee<=0){if(Math.random()<.28){p.paxis=p.paxis==='x'?'z':'x';p.a=p.paxis==='x'?(Math.random()<.5?Math.PI/2:-Math.PI/2):(Math.random()<.5?0:Math.PI)}else p.a+=Math.PI*(Math.random()<.5?1:-1)}}const sp=p.sp=p.flee>0?5:p.stay>0?0:1.6;movePed(p,dt,sp);if(p.hit>0){p.kx*=.88;p.kz*=.88}pedSidewalk(p);if(bump(p,.5)){pedSidewalk(p,true);p.a+=Math.PI/2}}
   p.wv-=dt;if(p.fall>0)deathPose(p,dt);else{const hh=p.hit>0;p.hit-=dt;p.m.position.set(p.x,0,p.z);p.m.rotation.y=p.a;p.m.rotation.x=hh?-Math.sin(clamp(p.hit/.35,0,1)*3.14)*.35:0;anim(p.m,p.sp||0,dt,hh?8:p.cop?(p.cm||0):p.flee>0?3:p.stay>0?(p.wv>0?2:1):0)}}
@@ -1224,11 +1323,11 @@ function copLogic(dt){const s=stars(),f=focus();let near=0;
  if(pl.car&&pl.car.hp<=0)dmg(pl.car,1);
  if(near)calm=0;else calm+=dt;if(s>0&&calm>5)wanted=Math.max(0,wanted-dt/7);
  if(s===0&&pl.hp<100&&!pl.dead)pl.hp=Math.min(100,pl.hp+2*dt)}
-let homeId=null;const SK='vice_streets_save_v1';
-function saveGame(){if(MPG.on)return;try{localStorage.setItem(SK,JSON.stringify({c:pl.cash,o:own,a:ammo,u:cur,m:mi,g:Math.round(gt),h:homeId,p:props.filter(p=>p.owned).map(p=>[p.id,p.paid,Math.floor(p.bank)])}))}catch(e){}}
-function loadGame(){try{const d=JSON.parse(localStorage.getItem(SK)||'null');if(!d)return;pl.cash=d.c;d.o.forEach((v,i)=>own[i]=v);d.a.forEach((v,i)=>ammo[i]=v);cur=d.u;mi=d.m;gt=d.g;homeId=d.h;
- for(const[id,paid,bank]of d.p){const p=props.find(q=>q.id===id);if(p){setOwned(p,1);p.paid=paid;p.bank=bank;if(id===homeId)pl.home={x:p.x,z:p.z}}}
- if(pl.home){pl.x=pl.home.x;pl.z=pl.home.z}setGiver();setTimeout(()=>toast('Progress loaded'),1500)}catch(e){}}
+let homeId=null,spawnMode='general';const SK='vice_streets_save_v1';
+function saveGame(){if(MPG.on)return;try{localStorage.setItem(SK,JSON.stringify({c:pl.cash,o:own,a:ammo,u:cur,m:mi,g:Math.round(gt),h:homeId,sm:spawnMode,p:props.filter(p=>p.owned).map(p=>[p.id,p.paid,Math.floor(p.bank)])}))}catch(e){}}
+function loadGame(){try{const d=JSON.parse(localStorage.getItem(SK)||'null');if(!d)return;pl.cash=d.c;d.o.forEach((v,i)=>own[i]=v);d.a.forEach((v,i)=>ammo[i]=v);cur=d.u;mi=d.m;gt=d.g;homeId=d.h;spawnMode=d.sm||'general';
+ for(const[id,paid,bank]of d.p){const p=props.find(q=>q.id===id);if(p){setOwned(p,1);p.paid=paid;p.bank=bank;if(id===homeId)pl.home={x:p.spawnX??p.x,z:p.spawnZ??p.z}}}
+ if(spawnMode==='property'&&pl.home){pl.x=pl.home.x;pl.z=pl.home.z}setGiver();setTimeout(()=>toast('Progress loaded'),1500)}catch(e){}}
 $('rsv').onclick=()=>{try{localStorage.removeItem(SK)}catch(e){}location.reload()};
 setInterval(()=>{if(started)saveGame()},30000);addEventListener('beforeunload',()=>{if(started)saveGame()});
 function shadeAll(){scene.traverse(o=>{if(o.isInstancedMesh)o.frustumCulled=false;if(o.isMesh&&o.material&&!o.material.isMeshBasicMaterial&&!o.material.isShaderMaterial){o.receiveShadow=true;o.castShadow=/Box|Cylinder|Sphere|Icosa|Extrude/.test(o.geometry.type)}})}
@@ -1308,7 +1407,7 @@ function create(env){
    let d;try{d=JSON.parse(txt)}catch(e){return}
    if(!d||d.v!==1||typeof d.ch!=='string')return;
    const fresh=pkt&&pkt.retain?(+d.t||0):now();
-   S.lobbies.set(k,{v:1,ch:d.ch.slice(0,16),n:String(d.n||'Lobby').slice(0,24),lk:d.lk?1:0,sa:String(d.sa||'').slice(0,40),vf:String(d.vf||'').slice(0,80),h:String(d.h||'?').slice(0,16),p:Math.max(0,Math.min(8,+d.p||0)),m:Math.max(2,Math.min(8,+d.m||8)),t:+d.t||0,key,bi:cn.i,fresh});
+   S.lobbies.set(k,{v:1,ch:d.ch.slice(0,16),n:String(d.n||'Lobby').slice(0,24),lk:d.lk?1:0,sa:String(d.sa||'').slice(0,40),vf:String(d.vf||'').slice(0,80),h:String(d.h||'?').slice(0,16),p:Math.max(0,Math.min(20,+d.p||0)),m:Math.max(2,Math.min(20,+d.m||20)),t:+d.t||0,key,bi:cn.i,fresh});
    emit('lobbies');return}
   const L=S.L;if(!L||cn.i!==L.bi||!topic.startsWith(L.base+'/'))return;
   const sub=topic.slice(L.base.length+1);
@@ -1358,7 +1457,7 @@ function create(env){
   if(S.L)leave();
   let sa='',vf='',key=null;
   if(locked){if(!env.subtle)throw new Error('Locked lobbies need a secure page (https or a local file)');if(!pw)throw new Error('Password required');sa=rid(16);const r=await derive(String(pw),sa);vf=r.vf;key=r.key}
-  enterLobby({ch:rid(10),bi:cn.i,name:String(name).slice(0,24),locked:!!locked,sa,vf,key,max:Math.max(2,Math.min(8,max|0||8))},true);
+  enterLobby({ch:rid(10),bi:cn.i,name:String(name).slice(0,24),locked:!!locked,sa,vf,key,max:Math.max(2,Math.min(20,max|0||20))},true);
   S.L.ready=true;pubListing();return S.L}
  async function join(entry,pw){
   if(S.L)leave();
@@ -1437,9 +1536,7 @@ function renderLobbies(){
 function setTab(t){tab=t;el('mpFind').style.display=t==='find'?'block':'none';el('mpCreate').style.display=t==='create'?'flex':'none';el('tabFind').className=t==='find'?'sel':'';el('tabCreate').className=t==='create'?'sel':'';err('');if(t==='find')renderLobbies()}
 function setType(lock){wantLock=lock;el('tOpen').className=lock?'':'sel';el('tLock').className=lock?'sel':'';el('pwRow').style.display=lock?'block':'none';err('')}
 function commitName(){me.name=cleanName(el('mpName').value,16)||me.name;el('mpName').value=me.name;try{localStorage.setItem('vs_name',me.name)}catch(e){}if(net)net.setName(me.name)}
-el('mpBtn').onclick=async()=>{
- el('mpMenu').style.display='flex';setTab('find');err('');renderStatus();renderLobbies();
- try{await ensureNet();net.setName(me.name);renderStatus();renderLobbies()}catch(e){err(e.message)}};
+el('mpBtn').onclick=()=>openSpawnPicker('multi');
 el('mpBack').onclick=()=>{el('mpMenu').style.display='none'};
 el('tabFind').onclick=()=>setTab('find');el('tabCreate').onclick=()=>{setTab('create');if(!el('cName').value)el('cName').placeholder=me.name+"'s lobby"};
 el('tOpen').onclick=()=>setType(false);
@@ -1617,13 +1714,13 @@ addEventListener('keyup',e=>{if(MPG.on&&e.code==='Tab'){e.preventDefault();showB
 
 /* ---------- entering / leaving a lobby ---------- */
 function startOnline(){
- const L=net.lobby();MPG.on=1;started=true;paused=false;
+ const L=net.lobby();MPG.on=1;vsAudioInit();if(VSA.ctx&&(VSA.ctx.state==='suspended'||VSA.ctx.state==='interrupted'))VSA.ctx.resume();vsSfx('pickup');started=true;window.__vsGameplayStart();paused=false;
  el('start').style.display='none';el('mpMenu').style.display='none';el('pwBox').style.display='none';
  el('saveBtn').style.display='none';el('mpTag').style.display='block';el('mpLeave').style.display='';
  const tb=el('topBtns');
  for(const[id,txt,fn]of[['bChat','💬 CHAT',()=>{MPG.chat?closeChat():openChat()}],['bBoard','👥 PLAYERS',()=>showBoard(el('board').style.display!=='block')]]){
   const b=document.createElement('button');b.id=id;b.textContent=txt;b.onclick=fn;tb.appendChild(b)}
- pl.x+=R(-4,4);pl.z+=R(-4,4);updTag();
+ setStartPosition();pl.x+=R(-2,2);pl.z+=R(-2,2);updTag();
  try{cv.requestPointerLock()}catch(e){}
  toast(`Joined “${L.name}” — Enter = chat · Tab = scoreboard`)}
 el('mpLeave').onclick=()=>{try{if(net)net.leave()}catch(e){}location.reload()};
