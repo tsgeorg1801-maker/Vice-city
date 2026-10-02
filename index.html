@@ -166,6 +166,7 @@ html,body{touch-action:none;-webkit-user-select:none;user-select:none;-webkit-to
 #cres{min-height:28px;font-size:20px;margin:6px 0;color:#ffe08a}
 @media(max-width:600px){#casino h2{font-size:24px}#casino .reels span{width:70px;height:70px;line-height:70px;font-size:40px}}
 </style>
+<script>addEventListener("error",function(e){var b=document.getElementById("errbar");if(b&&e.message&&e.message!=="Script error."){b.style.display="block";b.textContent="Error: "+e.message+(e.lineno?" (line "+e.lineno+")":"")}});</script>
 <script src="https://sdk.crazygames.com/crazygames-sdk-v3.js"></script>
 <script>
 window.__vsCrazyReady=(async function(){
@@ -199,17 +200,17 @@ window.__vsGameplayStart=function(){
 };
 </script></head><body>
 <canvas id="c"></canvas><div id="vg"></div><button id="soundBtn" type="button">🔊 SOUND ON</button><div id="topBtns"><button id="mapBtn">🗺 MAP</button><button id="saveBtn">💾 SAVE GAME</button></div>
-<div id="mapOverlay"><div id="mapHead"><h2>VICE STREETS MAP</h2><button class="sel" data-filter="all">All</button><button data-filter="shop">Shops</button><button data-filter="gun">Gun Shops</button><button data-filter="food">Food</button><button data-filter="conv">24h Store</button><button data-filter="cloth">Clothes</button><button data-filter="mod">Auto Shop</button><button data-filter="police">Police</button><button data-filter="prop">Properties</button><button data-filter="mission">Missions</button><button data-filter="you">You</button><button id="mapClose">✕ Close</button></div><canvas id="mapCanvas"></canvas><div id="mapTools"><button id="mapMinus">−</button><button id="mapReset">⌂</button><button id="mapPlus">+</button></div></div>
+<div id="mapOverlay"><div id="mapHead"><h2>VICE STREETS MAP</h2><button class="sel" data-filter="all">All</button><button data-filter="shop">Shops</button><button data-filter="gun">Gun Shops</button><button data-filter="food">Food</button><button data-filter="conv">24h Store</button><button data-filter="casino">🎰 Casino</button><button data-filter="cloth">Clothes</button><button data-filter="mod">Auto Shop</button><button data-filter="police">Police</button><button data-filter="prop">Properties</button><button data-filter="mission">Missions</button><button data-filter="you">You</button><button id="mapClose">✕ Close</button></div><canvas id="mapCanvas"></canvas><div id="mapTools"><button id="mapMinus">−</button><button id="mapReset">⌂</button><button id="mapPlus">+</button></div></div>
 
 <div id="hud"><div id="mpTag"></div><div id="clock"></div><div id="stars"></div><div id="cash"></div><div id="wpn"></div><div id="wbar"></div></div><div id="bars"><div class="bar"><i id="hp"></i></div><div class="bar" id="car" style="display:none"><i id="chp"></i></div></div><div id="obj"></div><div id="sub"></div><div id="passed"><div class="pt"></div><div class="pr"></div></div>
 <div id="pause"><h2>PAUSED</h2><button id="resume">Resume</button><button id="qbtn">Graphics</button><button id="rbtn">Rain: Off</button><button id="rsv">Reset save</button><button id="mpLeave" style="display:none">Leave lobby</button><div>WASD move · Mouse look · Click fire · 1-4 / X weapons · F use · H mug · Space brake · P pause</div></div>
 <div id="spd"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="92" fill="#000a" stroke="#fff6" stroke-width="3"/><g id="ticks" fill="#fff" stroke="#fff" font-size="10" font-family="Arial"></g><line id="ndl" x1="100" y1="100" x2="100" y2="30" stroke="#ff3b30" stroke-width="3" stroke-linecap="round" transform="rotate(-120 100 100)"/><circle cx="100" cy="100" r="6" fill="#ddd"/></svg><div id="gr">N</div><div id="sv">0</div><small>KM/H</small></div><div id="tc"><div id="joy"><div id="knob"></div></div><button id="bFire">FIRE</button><button id="bAct">ENTER<br>USE</button><button id="bWpn">GUN</button><button id="bBrk">BRAKE</button><button id="bMug">MUG</button><button id="bPause">II</button><div id="carControls"><button id="bLeft" aria-label="Steer left">◀</button><button id="bRight" aria-label="Steer right">▶</button><button id="bBrake"><span>▮▮</span>BRAKE</button><button id="bDrift"><span>↻</span>DRIFT</button><button id="bBack"><span>▼</span>REVERSE</button><button id="bGas"><span>▲</span>GAS</button></div></div>
 <canvas id="mm" width="280" height="280"></canvas>
 <div id="help">WASD move/drive · Shift sprint · Mouse or Q/E look · Click fire/punch · 1-4 weapons · T/G aim · <b>F</b> car / shop / mug · Space handbrake</div>
-<div id="xh"></div><div id="shop"><h2>GUN SHOP</h2><div id="items"></div><button id="close">Leave (F)</button></div><div id="casino"><div class="cw"><h2>♠ ROYAL CASINO ♥</h2><div>Balance: $<b id="cb">0</b></div>
-<div id="ctabs"><button data-g="slots">🎰 Slots</button><button data-g="roulette">🎡 Roulette</button><button data-g="bj">🃏 Blackjack</button></div>
-<div id="cbets">Bet: <button data-b="10">$10</button><button data-b="50">$50</button><button data-b="100">$100</button><button data-b="500">$500</button><button data-b="2000">$2000</button></div>
-<div id="cgame"></div><button id="cclose">Leave (F)</button></div></div><div id="hint"></div><div id="msg"></div><div id="wasted">WASTED</div>
+<div id="xh"></div><div id="shop"><h2>GUN SHOP</h2><div id="items"></div><button id="close">Leave (F)</button></div><div id="casino"><div class="cw"><h2>♠ ROYAL CASINO ♥</h2><div>Cash: $<b id="cb">0</b> &nbsp;·&nbsp; Chips: 🪙<b id="cc">0</b></div>
+<div id="ctabs"><button data-g="slots">🎰 Slots</button><button data-g="roulette">🎡 Roulette</button><button data-g="bj">🃏 Blackjack</button><button data-g="dice">🎲 Dice</button><button data-g="wheel">🌀 Fortune</button><button data-g="cashier">🪙 Cashier</button></div>
+<div id="cbets">Bet: <button data-b="10">🪙10</button><button data-b="50">🪙50</button><button data-b="100">🪙100</button><button data-b="500">🪙500</button><button data-b="2000">🪙2000</button></div>
+<div id="cgame"></div><button id="cclose">Leave (F)</button></div></div><div id="errbar" style="position:fixed;left:8px;right:8px;bottom:8px;z-index:99;background:#600e;color:#fff;font:12px monospace;padding:6px 10px;border-radius:6px;display:none;pointer-events:none"></div><div id="hint"></div><div id="msg"></div><div id="wasted">WASTED</div>
 <div id="start"><div class="lg">VICE<br>STREETS</div><div>Take missions · Steal cars · Buy guns · Outrun the law</div>
  <div class="modeBtns"><button id="go" class="modeBtn">🎮 SINGLE PLAYER</button><button id="mpBtn" class="modeBtn online">🌐 MULTIPLAYER</button></div>
  <small>Single player: saved locally · Multiplayer: join an open lobby or make a locked one with a password · iPad: left thumb moves, right thumb looks, buttons on the right.</small></div>
@@ -231,7 +232,7 @@ window.__vsGameplayStart=function(){
 </div></div>
 <div id="pwBox"><div><h3 id="pwTitle">🔒 Locked lobby</h3><div class="mpNote">Enter the password to join.</div><input id="pwIn" type="password" maxlength="32" placeholder="Password" autocomplete="off" data-enter="pwOk"><div id="pwErr"></div><div class="r"><button id="pwCancel" class="mpGhost">Cancel</button><button id="pwOk" style="background:#35a8ff;color:#06111b">Join</button></div></div></div>
 <div id="killfeed"></div><div id="chatLog"></div><input id="chatIn" maxlength="120" placeholder="Say something… (Enter = send, Esc = cancel)" autocomplete="off"><div id="board"></div><div id="hurt"></div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 const MPG={on:0,chat:0,pn:0,onRespawn(){}};
 /* ---------- procedural game audio ---------- */
@@ -525,7 +526,7 @@ for(let i=0;i<N;i++)for(let j=0;j<N;j++){const cx=i*P+P/2,cz=j*P+P/2;blocks.push
  const sub=i>=8||j>=8,dt=sub?.6:(i>2&&i<5&&j>2&&j<5?1.9:1);if(sub&&!COMM.has(i+','+j)){mkHouses(i,j,cx,cz);continue}
  for(let a=0;a<2;a++)for(let b=0;b<2;b++){if(a===0&&b===0&&SHOP_LOTS.has(i+','+j))continue;const h=R(10,55)*dt,m=bmat(bc[(Math.random()*bc.length)|0],h);
   const bl=new THREE.Mesh(new THREE.BoxGeometry(16,h,16),m);bl.position.set(cx+(a?9:-9),h/2+.3,cz+(b?9:-9));scene.add(bl);bldg.push({x:bl.position.x,z:bl.position.z,h});roofDetail(bl.position.x,bl.position.z,h);if(!sub&&b===1&&a===0&&(i*3+j)%5===2)mkApt(i,j,cz,bl.position.x,h)}}
-roofI.count=ri;acI.count=ai;antI.count=ni;[roofI,acI,antI].forEach(m=>scene.add(m));buildHouses();decorateHouses();const CAS={x:4*P+P/2,z:4*P+P/2,t:0,fl:0,npcs:[],spots:[],chand:[],wheels:[],bm:null,neon:null,scr:null};buildCasino();
+roofI.count=ri;acI.count=ai;antI.count=ni;[roofI,acI,antI].forEach(m=>scene.add(m));buildHouses();decorateHouses();const WS=(()=>{const a=Array(30).fill(0),p={2:[1,8,15,22],3:[5,19],5:[12],10:[26]};for(const k in p)for(const i of p[k])a[i]=+k;return a})();const CAS={x:4*P+P/2,z:4*P+P/2,t:0,fl:0,npcs:[],spots:[],chand:[],wheels:[],wf:[],bm:null,neon:null,scr:null};buildCasino();
 const lamps=[],lampMat=new THREE.MeshStandardMaterial({color:0x222222,emissive:0xffd9a0,emissiveIntensity:0}),glowTex=ctex(64,64,g=>{const r=g.createRadialGradient(32,32,0,32,32,32);r.addColorStop(0,'rgba(255,225,160,1)');r.addColorStop(1,'rgba(255,200,120,0)');g.fillStyle=r;g.fillRect(0,0,64,64)}),glowM=new THREE.PointsMaterial({map:glowTex,size:7,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,opacity:0});
 for(let i=0;i<=N;i++)for(let j=0;j<=N;j++)for(const[sx,sz]of[[-1,-1],[1,-1],[-1,1],[1,1]]){const x=i*P+sx*8.6,z=j*P+sz*8.6;if(x>3&&x<W-3&&z>3&&z<W-3)lamps.push([x,z])}
 const poleI=new THREE.InstancedMesh(new THREE.CylinderGeometry(.09,.13,7,6).translate(0,3.5,0),M(0x2a2d31),lamps.length),headI=new THREE.InstancedMesh(new THREE.BoxGeometry(1.3,.18,.45),lampMat,lamps.length),gp=[];
@@ -665,7 +666,7 @@ function mkCarOld(col,cop){const g=new THREE.Group(),body=new THREE.Mesh(new THR
 function addCar(x,z,h,kind,col){const c={x,z,h,v:0,kind,hp:100,dead:0,dir:null,wi:0,wj:0,mesh:mkCar(col??carCols[(Math.random()*8)|0],kind==='cop')};cars.push(c);return c}
 function roadPt(){const j=(Math.random()*(N+1))|0,k=(Math.random()*N)|0,s=Math.random()<.5?1:-1,o=Math.random()<.5,al=(k+R(.2,.8))*P,dir=o?[s,0]:[0,s];
  return{x:o?al:j*P,z:o?j*P:al,dir,wi:o?(s>0?k+1:k):j,wj:o?j:(s>0?k+1:k)}}
-const pl={x:2*P+8,z:2*P+20,h:0,hp:100,car:null,cash:500,cd:0,inv:0,dead:0};
+const pl={x:2*P+8,z:2*P+20,h:0,hp:100,car:null,cash:500,chips:0,cd:0,inv:0,dead:0};
 const focus=()=>pl.car||pl;
 function manOld(col){const m=new THREE.Group(),b=new THREE.Mesh(new THREE.BoxGeometry(.6,1,.4),M(col));b.position.y=1;m.add(b);
  const h=new THREE.Mesh(new THREE.SphereGeometry(.22,8,8),M(0xf0c8a0));h.position.y=1.75;m.add(h);const l=new THREE.Mesh(new THREE.BoxGeometry(.5,.6,.35),M(0x222233));l.position.y=.3;m.add(l);scene.add(m);return m}
@@ -1212,6 +1213,30 @@ function buildCasino(){const cx=CAS.x,cz=CAS.z,H=16,g=new THREE.Group(),gi=new T
  const bot=new THREE.InstancedMesh(new THREE.CylinderGeometry(.12,.12,.55,8),new THREE.MeshStandardMaterial({color:0xffffff,roughness:.2,metalness:.2}),72);let bk=0;for(const y of[1.9,2.9,3.9])for(let k=0;k<24;k++){setI(bot,bk,cx-7.4+k*.64,y,cz+16.1,1,1,1);bot.setColorAt(bk++,new THREE.Color().setHSL(hr(),.7,.5))}scene.add(bot);
  for(let k=0;k<7;k++){Cy(gi,.3,.3,.1,velvet,-6+k*2,.95,13.3,16);Cy(gi,.06,.06,.7,gold,-6+k*2,.6,13.3,8)}
  obs(0,14.6,8.2,.85);CAS.npcs.push({m:man(0x5a1020),x:0,z:15.6,ry:Math.PI,talk:1});
+
+ try{ // ----- Black Russia-style extras: chip cashier cage, craps table, wheel of fortune, bouncers -----
+ const wt=M(0xffffff),sg2=(t,c,x,y,z,w,h,ry)=>{const q=sign(t,c,x,y,z,w,h);q.rotation.y=ry;return q};
+ B(gi,6.4,1.1,1.2,wood,-8.5,.95,-13.4);B(gi,6.7,.1,1.5,gold,-8.5,1.55,-13.4);B(gi,6.7,.12,.2,gold,-8.5,3.95,-13.9);
+ for(let k=0;k<12;k++)Cy(gi,.04,.04,2.4,gold,-11.5+k*.55,2.75,-13.9,6);
+ for(let k=0;k<5;k++)for(let q=0;q<4;q++)Cy(gi,.16,.16,.07,[velvet,black,gold,felt,felt2][k],-10.6+k*.6,1.65+q*.08,-12.95,12);
+ obs(-8.5,-13.4,6.7,1.5);sg2('CHIPS · CASHIER','#5aff9a',-8.5,4.9,-13.95,5.6,1.4,0);sign('CASHIER','#5aff9a',-8.5,8.4,-12,5,1.7);
+ CAS.npcs.push({m:man(0x23315a),x:-8.5,z:-14.5,ry:0,talk:1});CAS.spots.push({x:cx-8.5,z:cz-12,r:2.3,g:'cashier'});
+ B(gi,2.6,.95,5.4,wood,-9.2,.82,-7.2);B(gi,2.4,.05,5.2,felt,-9.2,1.32,-7.2);B(gi,2.75,.08,5.55,gold,-9.2,1.3,-7.2);
+ B(gi,.22,.22,.22,wt,-9.5,1.46,-6.8);B(gi,.22,.22,.22,wt,-8.8,1.46,-7.5);
+ for(let k=0;k<3;k++)for(let q=0;q<4;q++)Cy(gi,.14,.14,.07,[velvet,black,gold][k],-9.9+k*.45,1.38+q*.07,-8.6,12);
+ obs(-9.2,-7.2,2.8,5.6);sign('DICE','#ff9f43',-9.2,8.4,-7.2,5,1.7);
+ CAS.npcs.push({m:man(0x181820),x:-9.2,z:-10.7,ry:0,talk:1},{m:man(0x6a2d2d),x:-11.2,z:-7.2,ry:Math.PI/2,talk:0});CAS.spots.push({x:cx-9.2,z:cz-4.6,r:2.2,g:'dice'});
+ {const WHC=v=>v===10?'#d4af37':v===5?'#7a3fb0':v===3?'#3a5a9c':v===2?'#2d6a4f':null;
+  const wc=ctex(512,512,q=>{q.translate(256,256);for(let i=0;i<30;i++){const v=WS[i];q.fillStyle=WHC(v)||(i%2?'#5a1624':'#2a0a10');q.beginPath();q.moveTo(0,0);q.arc(0,0,250,(i*12-90)*Math.PI/180,((i+1)*12-90)*Math.PI/180);q.closePath();q.fill();q.strokeStyle='#e8d9a0';q.lineWidth=3;q.stroke();if(v){q.save();q.rotate((i*12+6)*Math.PI/180);q.fillStyle='#fff';q.font='900 44px Georgia,serif';q.textAlign='center';q.fillText('×'+v,0,-195);q.restore()}}q.fillStyle='#1a050a';q.beginPath();q.arc(0,0,60,0,7);q.fill();q.strokeStyle='#d4af37';q.lineWidth=8;q.stroke()});
+  const wfO=new THREE.Group();wfO.position.set(cx-9.5,4.4,cz+8.2);wfO.rotation.y=Math.PI/2;scene.add(wfO);
+  const wfI=new THREE.Mesh(new THREE.CircleGeometry(2.1,40),new THREE.MeshBasicMaterial({map:wc}));wfI.position.z=.22;wfO.add(wfI);
+  const bk=new THREE.Mesh(new THREE.CylinderGeometry(2.25,2.25,.4,40),gold);bk.rotation.x=Math.PI/2;wfO.add(bk);
+  const pt=new THREE.Mesh(new THREE.ConeGeometry(.22,.6,3),new THREE.MeshBasicMaterial({color:0xff2a3a}));pt.position.set(0,2.4,.4);pt.rotation.z=Math.PI;wfO.add(pt);
+  CAS.wf.push(wfI);wfO.traverse(o=>{if(o.isMesh)o.userData.noShadow=true})}
+ Cy(gi,1.1,1.3,.6,gold,-9.5,.7,8.2,24);Cy(gi,.2,.2,2.6,gold,-9.5,1.5,8.2,10);obs(-9.5,8.2,2.6,2.6);sign('FORTUNE','#ffd24a',-9.5,8.4,8.2,6,1.7);
+ CAS.spots.push({x:cx-7.6,z:cz+8.2,r:2.4,g:'wheel'});
+ CAS.npcs.push({m:man(0x0b0b0b),x:-3.4,z:-15.3,ry:0,talk:1},{m:man(0x0b0b0b),x:3.4,z:-15.3,ry:0,talk:1});
+ }catch(e){console.warn('casino extras failed',e)}
  const pl2=new THREE.PointLight(0xffd9a0,1.4,42);pl2.position.set(cx,9,cz);scene.add(pl2);
  // outer walls collision
  obs(0,16.8,17.4,.4);obs(-16.8,0,.4,17);obs(16.8,0,.4,17);obs(-9.5,-16.8,7.7,.4);obs(9.5,-16.8,7.7,.4);
@@ -1222,37 +1247,52 @@ function buildCasino(){const cx=CAS.x,cz=CAS.z,H=16,g=new THREE.Group(),gi=new T
 function casinoTick(dt){const dx=pl.x-CAS.x,dz=pl.z-CAS.z;if(Math.abs(dx)>70||Math.abs(dz)>70)return;CAS.t+=dt;
  const ph=(CAS.t*2.5|0)%2;if(CAS.bm){CAS.bm[0].color.setHex(ph?0x5a4a20:0xffe08a);CAS.bm[1].color.setHex(ph?0xffe08a:0x5a4a20)}
  if(CAS.neon)CAS.neon.color.setScalar(.85+.15*Math.sin(CAS.t*3));
- for(const c of CAS.chand)c.rotation.y+=dt*.25;for(const w of CAS.wheels)w.rotation.y+=dt*1.6;
+ for(const c of CAS.chand)c.rotation.y+=dt*.25;for(const w of CAS.wheels)w.rotation.y+=dt*1.6;for(const w of CAS.wf)w.rotation.z-=dt*.6;
  if(Math.abs(dx)<20&&Math.abs(dz)<20){CAS.fl-=dt;if(CAS.fl<=0&&CAS.scr){CAS.fl=.18;const k=(Math.random()*26)|0;CAS.scr.setColorAt(k,new THREE.Color().setHSL(Math.random(),1,.55));CAS.scr.instanceColor.needsUpdate=true}
   for(const q of CAS.npcs)if(q.m)anim(q.m,0,dt,q.talk&&Math.hypot(pl.x-q.m.position.x,pl.z-q.m.position.z)<7?1:0)}}
-function casinoNear(){if(pl.car||pl.dead)return null;for(const s of CAS.spots)if(Math.hypot(pl.x-s.x,pl.z-s.z)<s.r)return s;return null}
-function casinoHint(){const s=casinoNear();return s?'F – Play '+(s.g==='slots'?'slot machines':s.g==='roulette'?'roulette':'blackjack'):''}
+function casinoNear(){if(pl.car||pl.dead)return null;let b=null,bd=1;for(const s of CAS.spots){const d=Math.hypot(pl.x-s.x,pl.z-s.z)/s.r;if(d<bd){bd=d;b=s}}return b}
+function casinoHint(){const s=casinoNear();return s?({slots:'F – Play slot machines',roulette:'F – Play roulette',bj:'F – Play blackjack',dice:'F – Play dice',wheel:'F – Spin the Wheel of Fortune',cashier:'F – Casino cashier · buy / sell chips'})[s.g]:''}
 function casinoUse(){const s=casinoNear();if(!s)return false;openCasino(s.g);return true}
 /* ---------- casino games ---------- */
-const CS={g:'slots',bet:50,spin:0,bj:null,rb:'red',rn:7},SYM=['🍒','🍋','🔔','⭐','💎','7️⃣'],SWT=[6,5,4,3,2,1],SPAY=[8,10,15,25,50,100],RED=new Set([1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36]);
-const cWin=(a,m)=>{if(a>0){pl.cash+=a;try{vsSfx('cash')}catch(e){}}$('cres')&&($('cres').textContent=m);cBal()},cBal=()=>{$('cb').textContent=pl.cash.toLocaleString();for(const b of document.querySelectorAll('#cbets button'))b.className=+b.dataset.b===CS.bet?'on':'';for(const b of document.querySelectorAll('#ctabs button'))b.className=b.dataset.g===CS.g?'on':''};
+const CS={g:'slots',bet:50,spin:0,bj:null,rb:'red',rn:7,db:'o',wr:0},SYM=['🍒','🍋','🔔','⭐','💎','7️⃣'],SWT=[6,5,4,3,2,1],SPAY=[8,10,15,25,50,100],RED=new Set([1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36]);
+const cWin=(a,m)=>{if(a>0){pl.chips+=a;try{vsSfx('cash')}catch(e){}}$('cres')&&($('cres').textContent=m);cBal()},cBal=()=>{$('cb').textContent=pl.cash.toLocaleString();$('cc').textContent=pl.chips.toLocaleString();for(const b of document.querySelectorAll('#cbets button'))b.className=+b.dataset.b===CS.bet?'on':'';for(const b of document.querySelectorAll('#ctabs button'))b.className=b.dataset.g===CS.g?'on':''};
 function openCasino(g){CS.g=g||CS.g;shopOpen=true;for(const k in keys)keys[k]=0;mouse=0;if(document.exitPointerLock)document.exitPointerLock();$('casino').style.display='flex';cRender()}
-function cRender(){cBal();({slots:cSlots,roulette:cRoul,bj:cBj})[CS.g]()}
+const cSp=c=>{if(pl.chips<c){toast('Not enough chips — buy more at the cashier');return false}pl.chips-=c;return true};
+function cRender(){cBal();$('cgame').onclick=null;$('cbets').style.display=CS.g==='cashier'?'none':'';({slots:cSlots,roulette:cRoul,bj:cBj,dice:cDice,wheel:cWheel,cashier:cCash})[CS.g]()}
 $('ctabs').onclick=e=>{const b=e.target.closest('button');if(b&&!CS.spin){CS.g=b.dataset.g;cRender()}};$('cbets').onclick=e=>{const b=e.target.closest('button');if(b&&!CS.spin){CS.bet=+b.dataset.b;cBal()}};$('cclose').onclick=closeShop;
 function cSlots(){$('cgame').innerHTML='<div class="reels"><span id="r0">🍒</span><span id="r1">🍋</span><span id="r2">🔔</span></div><div id="cres">Pull the lever!</div><button class="cbtn" id="spin">SPIN</button><div><small>3 of a kind pays ×8 to ×100 · two 🍒 pays ×2</small></div>';$('spin').onclick=cSpin}
 function cPick(){let r=Math.random()*21;for(let i=0;i<6;i++){r-=SWT[i];if(r<0)return i}return 0}
-function cSpin(){if(CS.spin||!spend(CS.bet))return;CS.spin=1;cBal();$('cres').textContent='Spinning…';const res=[cPick(),cPick(),cPick()],t0=performance.now(),iv=setInterval(()=>{const t=performance.now()-t0;for(let k=0;k<3;k++)$('r'+k).textContent=SYM[t<700+k*350?(Math.random()*6)|0:res[k]];
- if(t>700+2*350+60){clearInterval(iv);CS.spin=0;let a=0;if(res[0]===res[1]&&res[1]===res[2])a=CS.bet*SPAY[res[0]];else if(res.filter(v=>v===0).length===2)a=CS.bet*2;cWin(a,a?(res[0]===res[1]&&res[1]===res[2]?'JACKPOT! ':'Winner! ')+'+$'+a.toLocaleString():'No luck. Try again!')}},70)}
+function cSpin(){if(CS.spin||!cSp(CS.bet))return;CS.spin=1;cBal();$('cres').textContent='Spinning…';const res=[cPick(),cPick(),cPick()],t0=performance.now(),iv=setInterval(()=>{const t=performance.now()-t0;for(let k=0;k<3;k++)$('r'+k).textContent=SYM[t<700+k*350?(Math.random()*6)|0:res[k]];
+ if(t>700+2*350+60){clearInterval(iv);CS.spin=0;let a=0;if(res[0]===res[1]&&res[1]===res[2])a=CS.bet*SPAY[res[0]];else if(res.filter(v=>v===0).length===2)a=CS.bet*2;cWin(a,a?(res[0]===res[1]&&res[1]===res[2]?'JACKPOT! ':'Winner! ')+'+🪙'+a.toLocaleString():'No luck. Try again!')}},70)}
 function cRoul(){const T=[['red','Red ×2'],['black','Black ×2'],['even','Even ×2'],['odd','Odd ×2'],['d1','1-12 ×3'],['d2','13-24 ×3'],['d3','25-36 ×3'],['num','Number ×36']];
  $('cgame').innerHTML='<div id="rtypes">'+T.map(t=>'<button data-t="'+t[0]+'" class="'+(CS.rb===t[0]?'on':'')+'">'+t[1]+'</button>').join('')+'</div><div id="rnumw" style="display:'+(CS.rb==='num'?'block':'none')+'">Number: <input id="rnum" type="number" min="0" max="36" value="'+CS.rn+'" style="width:70px;font-size:18px;text-align:center"></div><div style="margin:10px"><span class="num" id="rball" style="background:#16a34a">0</span></div><div id="cres">Place your bet!</div><button class="cbtn" id="rspin">SPIN</button>';
  $('rtypes').onclick=e=>{const b=e.target.closest('button');if(b&&!CS.spin){CS.rb=b.dataset.t;cRoul()}};$('rspin').onclick=cRSpin;const ni=$('rnum');if(ni)ni.oninput=()=>CS.rn=clamp(parseInt(ni.value)||0,0,36)}
-function cRSpin(){if(CS.spin||!spend(CS.bet))return;CS.spin=1;cBal();const n=(Math.random()*37)|0,t0=performance.now(),ball=$('rball'),col=v=>v===0?'#16a34a':RED.has(v)?'#b3141f':'#141414';$('cres').textContent='No more bets…';
+function cRSpin(){if(CS.spin||!cSp(CS.bet))return;CS.spin=1;cBal();const n=(Math.random()*37)|0,t0=performance.now(),ball=$('rball'),col=v=>v===0?'#16a34a':RED.has(v)?'#b3141f':'#141414';$('cres').textContent='No more bets…';
  const iv=setInterval(()=>{const t=performance.now()-t0,v=t<2200?(Math.random()*37)|0:n;ball.textContent=v;ball.style.background=col(v);if(t>2300){clearInterval(iv);CS.spin=0;const b=CS.bet,r=CS.rb;let m=0;
   if(r==='red'&&RED.has(n))m=2;else if(r==='black'&&n>0&&!RED.has(n))m=2;else if(r==='even'&&n>0&&n%2===0)m=2;else if(r==='odd'&&n%2===1)m=2;else if(r==='d1'&&n>=1&&n<=12)m=3;else if(r==='d2'&&n>=13&&n<=24)m=3;else if(r==='d3'&&n>=25&&n<=36)m=3;else if(r==='num'&&n===CS.rn)m=36;
-  cWin(b*m,m?'Ball on '+n+' · You win +$'+(b*m).toLocaleString():'Ball on '+n+' · House wins')}},80)}
+  cWin(b*m,m?'Ball on '+n+' · You win +🪙'+(b*m).toLocaleString():'Ball on '+n+' · House wins')}},80)}
 const cCard=()=>({r:1+((Math.random()*13)|0),s:'♠♥♦♣'[(Math.random()*4)|0]}),cName=c=>['A','2','3','4','5','6','7','8','9','10','J','Q','K'][c.r-1]+c.s,
  cVal=h=>{let t=0,a=0;for(const c of h){t+=c.r>10?10:c.r===1?11:c.r;if(c.r===1)a++}while(t>21&&a>0){t-=10;a--}return t};
 function cBj(){const b=CS.bj,show=(h,hide)=>h.map((c,i)=>hide&&i===1?'🂠':cName(c)).join('  ');
  $('cgame').innerHTML=b?'<div>Dealer'+(b.over?' ('+cVal(b.d)+')':'')+'</div><div class="hand">'+show(b.d,!b.over)+'</div><div>You ('+cVal(b.p)+')</div><div class="hand">'+show(b.p)+'</div><div id="cres">'+(b.msg||'Your move')+'</div>'+(b.over?'<button class="cbtn" id="deal">DEAL AGAIN</button>':'<button id="hit">Hit</button><button id="stand">Stand</button>'+(b.p.length===2?'<button id="dbl">Double</button>':'')):'<div id="cres">Beat the dealer without going over 21. Blackjack pays 3:2.</div><button class="cbtn" id="deal">DEAL</button>';
- const q=id=>$(id);if(q('deal'))q('deal').onclick=cDeal;if(q('hit'))q('hit').onclick=()=>{b.p.push(cCard());if(cVal(b.p)>21)cEnd('Bust! You lose',0);else cBj()};if(q('stand'))q('stand').onclick=cStand;if(q('dbl'))q('dbl').onclick=()=>{if(!spend(b.bet))return;b.bet*=2;b.p.push(cCard());cBal();if(cVal(b.p)>21)cEnd('Bust! You lose',0);else cStand()}}
-function cDeal(){if(!spend(CS.bet))return;CS.bj={p:[cCard(),cCard()],d:[cCard(),cCard()],bet:CS.bet,over:0};cBal();const b=CS.bj;if(cVal(b.p)===21)cEnd(cVal(b.d)===21?'Push':'BLACKJACK! Pays 3:2',cVal(b.d)===21?1:2.5);else cBj()}
+ const q=id=>$(id);if(q('deal'))q('deal').onclick=cDeal;if(q('hit'))q('hit').onclick=()=>{b.p.push(cCard());if(cVal(b.p)>21)cEnd('Bust! You lose',0);else cBj()};if(q('stand'))q('stand').onclick=cStand;if(q('dbl'))q('dbl').onclick=()=>{if(!cSp(b.bet))return;b.bet*=2;b.p.push(cCard());cBal();if(cVal(b.p)>21)cEnd('Bust! You lose',0);else cStand()}}
+function cDeal(){if(!cSp(CS.bet))return;CS.bj={p:[cCard(),cCard()],d:[cCard(),cCard()],bet:CS.bet,over:0};cBal();const b=CS.bj;if(cVal(b.p)===21)cEnd(cVal(b.d)===21?'Push':'BLACKJACK! Pays 3:2',cVal(b.d)===21?1:2.5);else cBj()}
 function cStand(){const b=CS.bj;while(cVal(b.d)<17)b.d.push(cCard());const p=cVal(b.p),d=cVal(b.d);if(d>21)cEnd('Dealer busts! You win',2);else if(p>d)cEnd('You win!',2);else if(p===d)cEnd('Push',1);else cEnd('Dealer wins',0)}
-function cEnd(msg,mult){const b=CS.bj;b.over=1;b.msg=msg+(mult>1?' +$'+Math.round(b.bet*(mult-1)).toLocaleString():'');pl.cash+=Math.round(b.bet*mult);if(mult>1)try{vsSfx('cash')}catch(e){}cBj();cBal()}
+function cEnd(msg,mult){const b=CS.bj;b.over=1;b.msg=msg+(mult>1?' +🪙'+Math.round(b.bet*(mult-1)).toLocaleString():'');pl.chips+=Math.round(b.bet*mult);if(mult>1)try{vsSfx('cash')}catch(e){}cBj();cBal()}
+function cCash(){$('cgame').innerHTML='<div id="cres">Cashier · 1 chip = $1 · chips are safe if you die</div><div style="margin:8px 0">'+[100,500,2000,10000].map(n=>'<button data-buy="'+n+'">Buy 🪙'+n.toLocaleString()+'</button>').join('')+'</div><div><button data-out="half">Cash out half</button><button data-out="all">Cash out all</button></div>';
+ $('cgame').onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.buy){const n=+b.dataset.buy;if(pl.cash<n){toast('Not enough cash');return}pl.cash-=n;pl.chips+=n;$('cres').textContent='Bought 🪙'+n.toLocaleString()}else if(b.dataset.out){const n=b.dataset.out==='all'?pl.chips:Math.floor(pl.chips/2);if(n<=0){toast('No chips to cash out');return}pl.chips-=n;pl.cash+=n;try{vsSfx('cash')}catch(e){}$('cres').textContent='Cashed out $'+n.toLocaleString()}cBal()}}
+function cDice(){const T=[['u','Under 7 ×2.3'],['s','Seven ×5.5'],['o','Over 7 ×2.3']],dv='<span class="num" style="border-radius:14px;background:#b3141f" id="d';
+ $('cgame').innerHTML='<div id="rtypes">'+T.map(t=>'<button data-t="'+t[0]+'" class="'+(CS.db===t[0]?'on':'')+'">'+t[1]+'</button>').join('')+'</div><div style="margin:10px">'+dv+'0">⚀</span> '+dv+'1">⚁</span></div><div id="cres">Pick your bet and roll the dice!</div><button class="cbtn" id="roll">ROLL</button>';
+ $('rtypes').onclick=e=>{const b=e.target.closest('button');if(b&&!CS.spin){CS.db=b.dataset.t;cDice()}};$('roll').onclick=cDiceRoll}
+function cDiceRoll(){if(CS.spin||!cSp(CS.bet))return;CS.spin=1;cBal();const F=['⚀','⚁','⚂','⚃','⚄','⚅'],a=(Math.random()*6)|0,b=(Math.random()*6)|0,t0=performance.now();$('cres').textContent='Rolling…';
+ const iv=setInterval(()=>{const done=performance.now()-t0>1200;$('d0').textContent=F[done?a:(Math.random()*6)|0];$('d1').textContent=F[done?b:(Math.random()*6)|0];
+  if(done){clearInterval(iv);CS.spin=0;const t=a+b+2,k=CS.db;let m=0;if(k==='o'&&t>7)m=2.3;else if(k==='u'&&t<7)m=2.3;else if(k==='s'&&t===7)m=5.5;const w=Math.round(CS.bet*m);cWin(w,'Rolled '+t+(w?' · You win +🪙'+w.toLocaleString():' · House wins'))}},70)}
+const WHC=v=>v===10?'#d4af37':v===5?'#7a3fb0':v===3?'#3a5a9c':v===2?'#2d6a4f':null;
+function cWheel(){let gr='',lb='';for(let i=0;i<30;i++){gr+=(i?',':'')+(WHC(WS[i])||(i%2?'#5a1624':'#2a0a10'))+' '+i*12+'deg '+(i+1)*12+'deg';if(WS[i])lb+='<span style="position:absolute;inset:0;transform:rotate('+(i*12+6)+'deg);padding-top:6px;box-sizing:border-box;font:900 13px Georgia,serif;color:#fff;text-align:center">×'+WS[i]+'</span>'}
+ $('cgame').innerHTML='<div style="position:relative;width:230px;margin:18px auto 8px"><div style="position:absolute;left:50%;top:-18px;transform:translateX(-50%);z-index:2;color:#ff4d5a;font-size:30px;line-height:1">▼</div><div id="wh" style="position:relative;width:230px;height:230px;border-radius:50%;border:5px solid #d4af37;box-sizing:border-box;background:conic-gradient('+gr+');transform:rotate('+CS.wr+'deg);box-shadow:0 0 26px #d4af3788">'+lb+'<div style="position:absolute;inset:78px;border-radius:50%;background:#1a050a;border:3px solid #d4af37"></div></div></div><div id="cres">Wheel of Fortune · top prize ×10</div><button class="cbtn" id="wspin">SPIN</button>';
+ $('wspin').onclick=cWheelSpin}
+function cWheelSpin(){if(CS.spin||!cSp(CS.bet))return;CS.spin=1;cBal();const i=(Math.random()*30)|0,cu=((CS.wr%360)+360)%360,tg=(360-(i*12+6)+360)%360;CS.wr+=1800+((tg-cu+360)%360);const w=$('wh');$('cres').textContent='Round and round she goes…';w.getBoundingClientRect();w.style.transition='transform 4s cubic-bezier(.12,.6,.1,1)';w.style.transform='rotate('+CS.wr+'deg)';
+ setTimeout(()=>{CS.spin=0;const m=WS[i],a=CS.bet*m;cWin(a,m?'×'+m+' · You win +🪙'+a.toLocaleString():'No luck — house wins')},4100)}
 
 function sh(){return stores.find(s=>{if(s.k==='casino')return false;if(pl.car&&s.k!=='mod')return false;const rr=s.room;if(rr){const inside=Math.abs(pl.x-rr.x)<rr.w&&Math.abs(pl.z-rr.z)<rr.d;const door=Math.abs(pl.x-rr.x)<2.8&&Math.abs(pl.z-rr.doorZ)<3.0;return inside||door}return Math.hypot(s.x-pl.x,s.z-pl.z)<(pl.car?5:3.5)})}
 const spend=c=>{if(pl.cash<c){toast('Not enough cash');return false}pl.cash-=c;return true};
@@ -1336,7 +1376,8 @@ function mapWorldToScreen(x,z){const scale=Math.min(mapC.width/W,mapC.height/W)*
 function drawFullMap(){if(!mapOpen)return;const d=devicePixelRatio;mapX.clearRect(0,0,mapC.width,mapC.height);mapX.fillStyle='#263039';mapX.fillRect(0,0,mapC.width,mapC.height);const scale=Math.min(mapC.width/W,mapC.height/W)*mapZoom;
  for(const b of blocks){const [x,z]=mapWorldToScreen(b.x,b.z),r=18*scale;mapX.fillStyle='#59636b';mapX.fillRect(x-r,z-r,r*2,r*2);mapX.strokeStyle='#7c858b';mapX.strokeRect(x-r,z-r,r*2,r*2)}
  const dot=(x,z,c,r=5)=>{const p=mapWorldToScreen(x,z);mapX.fillStyle=c;mapX.beginPath();mapX.arc(p[0],p[1],Math.max(3,r*d),0,Math.PI*2);mapX.fill()};
- for(const st of stores){let f=st.k==='prop'?'prop':st.k;if(f==='prop'&&mapFilter!=='all'&&mapFilter!=='prop')continue;if(mapFilter!=='all'&&mapFilter!=='shop'&&mapFilter!==f&&!(mapFilter==='shop'&&['gun','food','conv','cloth','mod'].includes(f)))continue;let c={gun:'#ff8a00',food:'#9b6335',conv:'#31b85a',cloth:'#a45cff',mod:'#3d8cff',prop:st.c||'#fff'}[f]||'#fff';dot(st.x,st.z,c,6)}
+ for(const st of stores){if(st.k==='casino')continue;let f=st.k==='prop'?'prop':st.k;if(f==='prop'&&mapFilter!=='all'&&mapFilter!=='prop')continue;if(mapFilter!=='all'&&mapFilter!=='shop'&&mapFilter!==f&&!(mapFilter==='shop'&&['gun','food','conv','cloth','mod'].includes(f)))continue;let c={gun:'#ff8a00',food:'#9b6335',conv:'#31b85a',cloth:'#a45cff',mod:'#3d8cff',prop:st.c||'#fff'}[f]||'#fff';dot(st.x,st.z,c,6)}
+ if(mapFilter==='all'||mapFilter==='casino'||mapFilter==='shop'){const p=mapWorldToScreen(CAS.x,CAS.z),r=Math.max(10*d,17*scale);mapX.fillStyle='#d4af37';mapX.fillRect(p[0]-r,p[1]-r,r*2,r*2);mapX.strokeStyle='#fff6d8';mapX.lineWidth=2*d;mapX.strokeRect(p[0]-r,p[1]-r,r*2,r*2);mapX.textAlign='center';mapX.textBaseline='middle';mapX.font=Math.round(Math.max(16*d,r*1.3))+'px Arial';mapX.fillStyle='#000';mapX.fillText('🎰',p[0],p[1]+1);mapX.font='bold '+12*d+'px Arial';mapX.fillStyle='#ffe08a';mapX.strokeStyle='#000';mapX.lineWidth=3*d;mapX.strokeText('ROYAL CASINO',p[0],p[1]+r+11*d);mapX.fillText('ROYAL CASINO',p[0],p[1]+r+11*d);mapX.textAlign='left';mapX.textBaseline='alphabetic'}
  if(mapFilter==='all'||mapFilter==='police')for(const q of stations)dot(q.x,q.z,'#4a8cff',7);
  if(mapFilter==='all'||mapFilter==='mission')if(ms){for(const q of ms.pts)dot(q.x,q.z,'#ffd400',7)}else if(mi<MSN.length)dot(giver.x,giver.z,'#ffd400',7);
  if(mapFilter==='all'||mapFilter==='you')dot(pl.x,pl.z,'#fff',8);
@@ -1356,7 +1397,7 @@ function drawMap(){const f=focus(),s=1,sy=Math.sin(yaw),cy=Math.cos(yaw),C=140,T
  mg.clearRect(0,0,280,280);mg.fillStyle='rgba(125,135,145,.9)';
  for(const b of blocks){if(Math.abs(b.x-f.x)>140||Math.abs(b.z-f.z)>140)continue;mg.beginPath();[[-17,-17],[17,-17],[17,17],[-17,17]].forEach(([a,c],i)=>{const p=T(b.x+a,b.z+c);i?mg.lineTo(p[0],p[1]):mg.moveTo(p[0],p[1])});mg.fill()}
  for(const c of cars){if(c.dead)continue;const isC=c.kind==='cop';if(!isC&&c.kind!=='traffic')continue;const p=T(c.x,c.z);mg.fillStyle=isC?((tt*4|0)%2?'#f33':'#39f'):'#99a';mg.beginPath();mg.arc(p[0],p[1],isC?5:3,0,7);mg.fill()}
- for(const s of stores){mg.fillStyle=s.c;const p=T(s.x,s.z);if(Math.hypot(p[0]-C,p[1]-C)<124)mg.fillRect(p[0]-5,p[1]-5,10,10)}const bl=(x,z,c,q)=>{const p=T(x,z);let dx=p[0]-C,dy=p[1]-C;const d=Math.hypot(dx,dy);if(d>124){dx*=124/d;dy*=124/d}mg.fillStyle=c;if(q)mg.fillRect(C+dx-7,C+dy-7,14,14);else{mg.beginPath();mg.arc(C+dx,C+dy,7,0,7);mg.fill()}};
+ for(const s of stores){mg.fillStyle=s.c;const p=T(s.x,s.z);if(Math.hypot(p[0]-C,p[1]-C)<124)mg.fillRect(p[0]-5,p[1]-5,10,10)}const bl=(x,z,c,q)=>{const p=T(x,z);let dx=p[0]-C,dy=p[1]-C;const d=Math.hypot(dx,dy);if(d>124){dx*=124/d;dy*=124/d}mg.fillStyle=c;if(q)mg.fillRect(C+dx-7,C+dy-7,14,14);else{mg.beginPath();mg.arc(C+dx,C+dy,7,0,7);mg.fill()}};bl(CAS.x,CAS.z,'#ffd24a',1);
  for(const q of stations)bl(q.x,q.z,'#4a8cff',1);if(heli.on)bl(heli.x,heli.z,'#9cf');if(!ms&&mi<MSN.length)bl(giver.x,giver.z,'#ffd400',1);if(ms){ms.pts.forEach(p=>bl(p.x,p.z,'#ffd400'));ms.tg.forEach(p=>{if(p.fall<=0)bl(p.x,p.z,'#f22')})}
  mg.save();mg.translate(C,C);mg.rotate(yaw-f.h);mg.fillStyle='#fff';mg.beginPath();mg.moveTo(0,-14);mg.lineTo(10,12);mg.lineTo(-10,12);mg.fill();mg.restore()}
 function update(dt){
@@ -1382,7 +1423,7 @@ function update(dt){
  const dist=pl.car?9:5.5,ty=pl.car?1.5:1.6,cp={x:tg.x-Math.sin(yaw)*dist*Math.cos(pitch),z:tg.z-Math.cos(yaw)*dist*Math.cos(pitch)};bump(cp,1.5);
  cam.position.set(cp.x,ty+dist*Math.sin(pitch)+.5,cp.z);if(pl.car)cam.lookAt(tg.x,ty,tg.z);else cam.lookAt(tg.x+Math.sin(yaw)*40,ty+aim,tg.z+Math.cos(yaw)*40);
  const s=stars();$('stars').innerHTML=[1,2,3,4,5].map(i=>`<b class="${i<=s?'on':''}">★</b>`).join('');$('stars').className=s&&calm<1?'flash':'';
- $('cash').textContent='$'+pl.cash;$('wpn').textContent=cur?WP[cur].n+' · '+ammo[cur]:'Fists';$('xh').style.display=cur&&!pl.car&&!pl.dead?'block':'none';
+ $('cash').textContent='$'+pl.cash+(pl.chips?'  🪙'+pl.chips:'');$('wpn').textContent=cur?WP[cur].n+' · '+ammo[cur]:'Fists';$('xh').style.display=cur&&!pl.car&&!pl.dead?'block':'none';
  {const sg=own.join('')+cur;if(sg!==lastSig){lastSig=sg;$('wbar').innerHTML=WP.map((w,i)=>`<button data-i="${i}" class="${own[i]?'own':''} ${i===cur?'cur':''}">${['FIST','9MM','SMG','SHOT'][i]}</button>`).join('')}}
  gt=(gt+dt*2)%1440;const L=.5+.5*Math.sin(gt/1440*6.2832-1.5708);rainStep(dt);$('clock').textContent=String(gt/60|0).padStart(2,'0')+':'+String(gt%60|0).padStart(2,'0');
  if(subT>0){subT-=dt;if(subT<=0)$('sub').style.opacity=0}missionUpdate(dt);$('hp').style.width=clamp(pl.hp,0,100)+'%';$('car').style.display=pl.car?'block':'none';if(pl.car)$('chp').style.width=clamp(pl.car.hp,0,100)+'%';
@@ -1452,8 +1493,8 @@ function copLogic(dt){const s=stars(),f=focus();let near=0;
  if(near)calm=0;else calm+=dt;if(s>0&&calm>5)wanted=Math.max(0,wanted-dt/7);
  if(s===0&&pl.hp<100&&!pl.dead)pl.hp=Math.min(100,pl.hp+2*dt)}
 let homeId=null,spawnMode='general';const SK='vice_streets_save_v1';
-function saveGame(){if(MPG.on)return;try{localStorage.setItem(SK,JSON.stringify({c:pl.cash,o:own,a:ammo,u:cur,m:mi,g:Math.round(gt),h:homeId,sm:spawnMode,p:props.filter(p=>p.owned).map(p=>[p.id,p.paid,Math.floor(p.bank)])}))}catch(e){}}
-function loadGame(){try{const d=JSON.parse(localStorage.getItem(SK)||'null');if(!d)return;pl.cash=d.c;d.o.forEach((v,i)=>own[i]=v);d.a.forEach((v,i)=>ammo[i]=v);cur=d.u;mi=d.m;gt=d.g;homeId=d.h;spawnMode=d.sm||'general';
+function saveGame(){if(MPG.on)return;try{localStorage.setItem(SK,JSON.stringify({c:pl.cash,ch:pl.chips,o:own,a:ammo,u:cur,m:mi,g:Math.round(gt),h:homeId,sm:spawnMode,p:props.filter(p=>p.owned).map(p=>[p.id,p.paid,Math.floor(p.bank)])}))}catch(e){}}
+function loadGame(){try{const d=JSON.parse(localStorage.getItem(SK)||'null');if(!d)return;pl.cash=d.c;pl.chips=d.ch||0;d.o.forEach((v,i)=>own[i]=v);d.a.forEach((v,i)=>ammo[i]=v);cur=d.u;mi=d.m;gt=d.g;homeId=d.h;spawnMode=d.sm||'general';
  for(const[id,paid,bank]of d.p){const p=props.find(q=>q.id===id);if(p){setOwned(p,1);p.paid=paid;p.bank=bank;if(id===homeId)pl.home={x:p.spawnX??p.x,z:p.spawnZ??p.z}}}
  if(spawnMode==='property'&&pl.home){pl.x=pl.home.x;pl.z=pl.home.z}setGiver();setTimeout(()=>toast('Progress loaded'),1500)}catch(e){}}
 $('rsv').onclick=()=>{try{localStorage.removeItem(SK)}catch(e){}location.reload()};
